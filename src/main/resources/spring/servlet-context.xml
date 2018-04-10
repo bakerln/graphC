@@ -14,8 +14,6 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
-    <!--解决添加mvc:resources添加后无法访问Controller-->
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven/>
 
@@ -30,21 +28,15 @@
             <!--class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />-->
 
     <!-- 这个类用于Spring MVC视图解析 -->
-    <!--<beans:bean id="viewResolver"-->
-                <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<beans:property name="prefix" value="/WEB-INF/pages/" />-->
-        <!--<beans:property name="suffix" value=".jsp" />-->
-    <!--</beans:bean>-->
-
-    <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/><!--设置JSP文件的目录位置-->
-        <property name="suffix" value=".jsp"/>
-        <property name="attributes">
-            <props>
-                <prop key="dynamicServer">${dynamicServer}</prop>
-                <prop key="resourceServer">${resourceServer}</prop>
-            </props>
-        </property>
-    </bean>
+    <!--<bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/views/"/>&lt;!&ndash;设置JSP文件的目录位置&ndash;&gt;-->
+        <!--<property name="suffix" value=".jsp"/>-->
+        <!--<property name="attributes">-->
+            <!--<props>-->
+                <!--<prop key="dynamicServer">${dynamicServer}</prop>-->
+                <!--<prop key="resourceServer">${resourceServer}</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
 
 </beans>

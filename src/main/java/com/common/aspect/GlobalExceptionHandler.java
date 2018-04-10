@@ -1,9 +1,10 @@
 package com.common.aspect;
 
+import com.common.util.json.JsonUtil;
+import com.common.util.json.ResultMsg;
 import com.common.util.web.WebUtil;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,14 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-//    @ExceptionHandler(value = Exception.class)
-//    public ModelAndView defaultErrorHandler(){
-//        ModelAndView mv = new ModelAndView();
-//        mv.setViewName("false");
-//        return mv;
-//    }
     @ExceptionHandler(value = Exception.class)
-    public void defaultErrorHandler(HttpServletResponse httpServletResponse){
-        WebUtil.out(httpServletResponse,"error");
+    public void defaultErrorHandler(HttpServletResponse httpServletResponse,Exception e){
+        ResultMsg resultMsg = new ResultMsg("01","GlobalException",e.getClass());
+        WebUtil.out(httpServletResponse,JsonUtil.createOperaStr(true,"GlobalException",resultMsg));
     }
 }

@@ -6,21 +6,21 @@ package com.common.util.json;
  */
 public class ResultMsg {
 
-    private int errcode;
+    private String errcode;
     private String errmsg;
     private Object data;
 
-    public ResultMsg(int ErrCode, String ErrMsg, Object data) {
+    public ResultMsg(String ErrCode, String ErrMsg, Object data) {
         this.errcode = ErrCode;
         this.errmsg = ErrMsg;
         this.data = data;
     }
 
-    public int getErrcode() {
+    public String getErrcode() {
         return errcode;
     }
 
-    public void setErrcode(int errcode) {
+    public void setErrcode(String errcode) {
         this.errcode = errcode;
     }
 
