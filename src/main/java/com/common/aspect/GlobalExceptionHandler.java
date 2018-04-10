@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by LiNan on 2018-04-09.
- * Description:系统全局异常处理
+ * Description:系统全局异常跳转
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     public void defaultErrorHandler(HttpServletResponse httpServletResponse,Exception e){
-        ResultMsg resultMsg = new ResultMsg("01","GlobalException",e.getClass());
+        ResultMsg resultMsg = new ResultMsg("01","GlobalException","异常类型: " + e.getClass() + "  异常信息: " + e.getMessage());
         WebUtil.out(httpServletResponse,JsonUtil.createOperaStr(true,"GlobalException",resultMsg));
     }
 }

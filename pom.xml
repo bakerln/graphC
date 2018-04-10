@@ -17,15 +17,11 @@
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
         <persistence-api.version>1.0.2</persistence-api.version>
         <oracle.version>11.2.0.1.0</oracle.version>
+        <mysql.version>6.0.6</mysql.version>
         <druid.version>1.0.25</druid.version>
         <jackson.version>2.9.1</jackson.version>
-        <UserAgentUtils.version>1.20</UserAgentUtils.version>
-        <poi.version>3.14</poi.version>
         <jedis.version>2.9.0</jedis.version>
         <spring-data-redis.version>1.7.2.RELEASE</spring-data-redis.version>
-        <log4j.version>1.2.17</log4j.version>
-        <jcl.slf4j.version>1.7.21</jcl.slf4j.version>
-        <logback.version>1.1.7</logback.version>
         <lombok.version>1.16.20</lombok.version>
     </properties>
 
@@ -76,6 +72,11 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <!-- JSTL Servlet-->
         <dependency>
             <groupId>jstl</groupId>
@@ -99,6 +100,11 @@
             <version>${oracle.version}</version>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
@@ -114,6 +120,11 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
         <!--redis-->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -125,21 +136,37 @@
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
         </dependency>
-        <!--Spice up your java: Automatic Resource Management, automatic generation of getters, setters, equals, hashCode and toString, and more! -->
+        <!--提供对 AspectJ 的支持 AOP实现 -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>${persistence-api.version}</version>
+        </dependency>
+        <!--Spice up your java: Automatic Resource Management, automatic generation of getters, setters, equals, hashCode and toString, and more! -->
         <!--<dependency>-->
-            <!--<groupId>junit</groupId>-->
-            <!--<artifactId>junit</artifactId>-->
-            <!--<version>3.8.1</version>-->
-            <!--<scope>test</scope>-->
+            <!--<groupId>org.projectlombok</groupId>-->
+            <!--<artifactId>lombok</artifactId>-->
+            <!--<version>${lombok.version}</version>-->
+            <!--<scope>provided</scope>-->
         <!--</dependency>-->
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
     </dependencies>
 
 

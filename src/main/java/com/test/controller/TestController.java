@@ -3,12 +3,10 @@ package com.test.controller;
 import com.common.redis.RedisUtil;
 import com.common.util.date.DateUtil;
 import com.common.util.web.WebUtil;
-import com.test.dto.Test;
 import com.test.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,18 +40,7 @@ public class TestController {
     public void getRedis(HttpServletResponse httpServletResponse,String id){
         WebUtil.out(httpServletResponse,testService.getRedis(id));
     }
-    @RequestMapping(value = "/false")
-    public ModelAndView getfalse(){
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("false");
-        return mv;
-    }
 
-    public static void main(String[] args) {
-        Test test = new Test();
-        test.setName("haem");
-        System.out.println(test.getName());
-    }
 
 }
 
