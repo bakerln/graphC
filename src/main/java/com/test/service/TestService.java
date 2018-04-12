@@ -27,6 +27,7 @@ public class TestService {
 
     public String getRedis(String id) {
 //        throw new RuntimeException("error");
-        return redisUtil.get(id);
+        String a = redisUtil.get(id);
+        return a;
     }
 }

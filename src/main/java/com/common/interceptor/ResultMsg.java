@@ -1,4 +1,4 @@
-package com.common.util.json;
+package com.common.interceptor;
 
 /**
  * Created by LiNan on 2018-04-09.
@@ -6,30 +6,30 @@ package com.common.util.json;
  */
 public class ResultMsg {
 
-    private String errcode;
-    private String errmsg;
+    private String errorCode;
+    private String errorMsg;
     private Object data;
 
     public ResultMsg(String ErrCode, String ErrMsg, Object data) {
-        this.errcode = ErrCode;
-        this.errmsg = ErrMsg;
+        this.errorCode = ErrCode;
+        this.errorMsg = ErrMsg;
         this.data = data;
     }
 
     public String getErrcode() {
-        return errcode;
+        return errorCode;
     }
 
     public void setErrcode(String errcode) {
-        this.errcode = errcode;
+        this.errorCode = errcode;
     }
 
     public String getErrmsg() {
-        return errmsg;
+        return errorMsg;
     }
 
     public void setErrmsg(String errmsg) {
-        this.errmsg = errmsg;
+        this.errorMsg = errmsg;
     }
 
     public Object getData() {

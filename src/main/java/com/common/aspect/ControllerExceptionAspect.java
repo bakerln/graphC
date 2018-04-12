@@ -6,21 +6,20 @@ import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
- * Created by LiNan on 2018-04-10.
- * Description: service层异常拦截记录
+ * Created by LiNan on 2018-04-12.
+ * Description: controller层异常拦截记录
  */
 @Aspect
-public class ServiceExceptionAspect {
-    private static Logger logger = LoggerFactory.getLogger("serviceLog");
+public class ControllerExceptionAspect {
+    private static Logger logger = LoggerFactory.getLogger("controllerLog");
 
-    @AfterThrowing(value = "execution(* com.*.service.*.*(..))", throwing = "e")
-    public void loggingException(JoinPoint joinPoint, Exception e){
+    @AfterThrowing(value = "execution (* com.*.controller.*.*(..))", throwing = "e")
+    public void loggingException(JoinPoint joinPoint, Exception e) {
         // 拦截的实体类
         Object target = joinPoint.getTarget(); // 拦截的方法名称
         String methodName = joinPoint.getSignature().getName();
-        logger.error("Service实体类:" + target);
+        logger.error("Controller实体类:" + target);
         logger.error("方法名:" + methodName);
         logger.error("异常类名:" + joinPoint.getSignature().getName().getClass());
         // 得到被拦截方法参数，并打印
@@ -31,5 +30,4 @@ public class ServiceExceptionAspect {
         logger.error("异常类型: " + e.getClass());
         logger.error("异常信息: " + e.getMessage());
     }
-
 }

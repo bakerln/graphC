@@ -1,8 +1,10 @@
 package com.common.aspect;
 
 import com.common.util.json.JsonUtil;
-import com.common.util.json.ResultMsg;
+import com.common.interceptor.ResultMsg;
 import com.common.util.web.WebUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -15,9 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
+    private static Logger logger = LoggerFactory.getLogger("sysLog");
 
     @ExceptionHandler(value = Exception.class)
     public void defaultErrorHandler(HttpServletResponse httpServletResponse,Exception e){
+        logger.error("实体类: GlobalExcepton");
+        logger.error("异常类型: " + e.getClass());
+        logger.error("异常信息: " + e.getMessage());
         ResultMsg resultMsg = new ResultMsg("01","GlobalException","异常类型: " + e.getClass() + "  异常信息: " + e.getMessage());
         WebUtil.out(httpServletResponse,JsonUtil.createOperaStr(true,"GlobalException",resultMsg));
     }
