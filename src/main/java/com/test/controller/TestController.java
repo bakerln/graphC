@@ -18,15 +18,20 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(value = "/test")
 public class TestController {
 
+    private int a = 1;
+
+
     @Autowired
     private TestService testService;
     @Autowired
     private RedisUtil redisUtil;
 
 
+
     @RequestMapping(value = "/getValue")
-    public void getData(){
-        testService.getData();
+    public void getData(HttpServletResponse response){
+//        testService.getData();
+        WebUtil.out(response,testService.toString());
     }
 
     @RequestMapping(value = "/redis")
@@ -41,6 +46,21 @@ public class TestController {
         WebUtil.out(httpServletResponse,testService.getRedis(id));
     }
 
+    @RequestMapping(value = "/hello")
+    public void getResponse(HttpServletResponse response,String test) throws InterruptedException {
+        if (test.equals("on")){
+            a += 1;
+            System.out.println("begin to sleep");
+            Thread.currentThread().sleep(10000);
+            System.out.println("end of sleep");
+            WebUtil.out(response,"awake");
+
+            a += 10;
+        }else{
+            WebUtil.out(response,test + " from class " + this.a);
+        }
+
+    }
 
 }
 
