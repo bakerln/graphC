@@ -1,6 +1,6 @@
 package com.test.service;
 
-import com.common.redis.RedisUtil;
+import com.config.redis.RedisUtil;
 import com.test.dao.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

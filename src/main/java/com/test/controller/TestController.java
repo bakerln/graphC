@@ -1,8 +1,8 @@
 package com.test.controller;
 
-import com.common.redis.RedisUtil;
-import com.common.util.date.DateUtil;
-import com.common.util.web.WebUtil;
+import com.config.redis.RedisUtil;
+import com.config.util.date.DateUtil;
+import com.config.util.web.WebUtil;
 import com.test.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

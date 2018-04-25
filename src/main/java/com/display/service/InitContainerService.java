@@ -1,8 +1,8 @@
 package com.display.service;
 
-import com.display.model.Area;
-import com.display.model.Container;
-import com.display.model.Group;
+import com.display.model.AreaTest;
+import com.display.model.ContainerTest;
+import com.display.model.GroupTest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import java.util.List;
 public class InitContainerService {
 
 
-    public List<Area> getArea() {
-        Area area1 = new Area();
+    public List<AreaTest> getArea() {
+        AreaTest area1 = new AreaTest();
         area1.setKey("CraneArea");
         area1.setIsGroup(true);
         area1.setCategory("OfGroups");
@@ -26,7 +26,7 @@ public class InitContainerService {
         area1.setColor("#333");
         area1.setStroke("rgba(128,128,128,0.4)");
 
-        Area area2 = new Area();
+        AreaTest area2 = new AreaTest();
         area2.setKey("CraneArea");
         area2.setIsGroup(true);
         area2.setCategory("OfGroups");
@@ -35,7 +35,7 @@ public class InitContainerService {
         area2.setColor("#333");
         area2.setStroke("rgba(128,128,128,0.4)");
 
-        Area area3 = new Area();
+        AreaTest area3 = new AreaTest();
         area3.setKey("truckArea");
         area3.setIsGroup(true);
         area3.setCategory("OfGroups");
@@ -44,7 +44,7 @@ public class InitContainerService {
         area3.setColor("#95c3bf");
         area3.setStroke("rgba(128,128,128,0.4)");
 
-        Area area4 = new Area();
+        AreaTest area4 = new AreaTest();
         area4.setKey("BoxArea");
         area4.setIsGroup(true);
         area4.setCategory("OfGroups");
@@ -53,7 +53,7 @@ public class InitContainerService {
         area4.setColor("#9bab88");
         area4.setStroke("rgba(128,128,128,0.4)");
 
-        Area area5 = new Area();
+        AreaTest area5 = new AreaTest();
         area5.setKey("trainArea");
         area5.setIsGroup(true);
         area5.setCategory("OfGroups");
@@ -62,7 +62,7 @@ public class InitContainerService {
         area5.setColor("#758790");
         area5.setStroke("rgba(128,128,128,0.4)");
 
-        List<Area> areaList = new ArrayList<>();
+        List<AreaTest> areaList = new ArrayList<>();
         areaList.add(area1);
         areaList.add(area2);
         areaList.add(area3);
@@ -73,8 +73,8 @@ public class InitContainerService {
 
     }
 
-    public List<Group> getGroup() {
-        Group group1 = new Group();
+    public List<GroupTest> getGroup() {
+        GroupTest group1 = new GroupTest();
         group1.setKey("G1");
         group1.setIsGroup(true);
         group1.setGroup("BoxArea");
@@ -82,7 +82,7 @@ public class InitContainerService {
         group1.setSize("40 60");
         group1.setPos("0 120");
 
-        Group group2 = new Group();
+        GroupTest group2 = new GroupTest();
         group2.setKey("G2");
         group2.setIsGroup(true);
         group2.setGroup("BoxArea");
@@ -90,7 +90,7 @@ public class InitContainerService {
         group2.setSize("40 60");
         group2.setPos("50 120");
 
-        Group group3 = new Group();
+        GroupTest group3 = new GroupTest();
         group3.setKey("G3");
         group3.setIsGroup(true);
         group3.setGroup("BoxArea");
@@ -98,7 +98,7 @@ public class InitContainerService {
         group3.setSize("40 60");
         group3.setPos("0 190");
 
-        Group group4 = new Group();
+        GroupTest group4 = new GroupTest();
         group4.setKey("G4");
         group4.setIsGroup(true);
         group4.setGroup("BoxArea");
@@ -106,7 +106,7 @@ public class InitContainerService {
         group4.setSize("40 60");
         group4.setPos("0 260");
 
-        Group group5 = new Group();
+        GroupTest group5 = new GroupTest();
         group5.setKey("G5");
         group5.setIsGroup(true);
         group5.setGroup("BoxArea");
@@ -114,7 +114,7 @@ public class InitContainerService {
         group5.setSize("40 60");
         group5.setPos("0 330");
 
-        List<Group> groupList = new ArrayList<>();
+        List<GroupTest> groupList = new ArrayList<>();
         groupList.add(group1);
         groupList.add(group2);
         groupList.add(group3);
@@ -123,35 +123,35 @@ public class InitContainerService {
         return groupList;
     }
 
-    public List<Container> getContainer() {
-        Container container1 = new Container();
+    public List<ContainerTest> getContainer() {
+        ContainerTest container1 = new ContainerTest();
         container1.setKey("B1");
         container1.setGroup("G1");
         container1.setSize("40 20");
         container1.setLayer(2);
         container1.setPos("0 140");
 
-        Container container2 = new Container();
+        ContainerTest container2 = new ContainerTest();
         container2.setKey("B2");
         container2.setGroup("G1");
         container2.setSize("40 20");
         container2.setLayer(1);
         container2.setPos("0 160");
 
-        Container container3 = new Container();
+        ContainerTest container3 = new ContainerTest();
         container3.setKey("B3");
         container3.setGroup("G3");
         container3.setSize("40 20");
         container3.setLayer(1);
         container3.setPos("0 300");
 
-        Container container4 = new Container();
+        ContainerTest container4 = new ContainerTest();
         container4.setKey("B4");
         container4.setGroup("G4");
         container4.setSize("40 20");
         container4.setLayer(1);
         container4.setPos("0 440");
-        List<Container> containerList = new ArrayList<>();
+        List<ContainerTest> containerList = new ArrayList<>();
         containerList.add(container1);
         containerList.add(container2);
         containerList.add(container3);

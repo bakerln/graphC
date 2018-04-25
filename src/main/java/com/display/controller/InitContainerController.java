@@ -1,17 +1,16 @@
 package com.display.controller;
 
-import com.common.util.json.JsonUtil;
-import com.common.util.web.WebUtil;
-import com.display.model.Area;
-import com.display.model.Container;
-import com.display.model.Group;
+import com.config.util.json.JsonUtil;
+import com.config.util.web.WebUtil;
+import com.display.model.AreaTest;
+import com.display.model.ContainerTest;
+import com.display.model.GroupTest;
 import com.display.service.InitContainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,11 +28,11 @@ public class InitContainerController {
 
     @RequestMapping(value = "/init")
     public void initContainerYard(HttpServletResponse response){
-        List<Area> areaList = initContainerService.getArea();
+        List<AreaTest> areaList = initContainerService.getArea();
 
-        List<Group> groupList = initContainerService.getGroup();
+        List<GroupTest> groupList = initContainerService.getGroup();
 
-        List<Container> containerList = initContainerService.getContainer();
+        List<ContainerTest> containerList = initContainerService.getContainer();
 
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);

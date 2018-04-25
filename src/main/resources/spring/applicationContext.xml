@@ -71,7 +71,7 @@
     <!--添加声明，为Spring容器中那些匹配@AspectJ切面的Bean创建代理，其中的proxy-target-class="true" 表示使用CGLib动态代理技术织入增强 -->
     <aop:aspectj-autoproxy/>
     <!--service异常切面 -->
-    <bean id="serviceExceptionAspect" class="com.common.aspect.ServiceExceptionAspect" />
+    <bean id="serviceExceptionAspect" class="com.config.aspect.ServiceExceptionAspect" />
 
 
     <!-- 利用AOP配置事务处理 -->
