@@ -20,7 +20,7 @@ import java.util.Map;
  * Description: 箱场初始化
  */
 @Controller
-@RequestMapping(value = "/display")
+@RequestMapping(value = "/displayTest")
 public class InitContainerController {
 
     @Autowired
