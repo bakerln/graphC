@@ -15,9 +15,9 @@ public class InitController {
      *  use AreaVO\GrouopVO get value and put into MODEL to save
      *
      */
-    //画图
-    @RequestMapping(value = "/initElement")
-    public void initElement(List areaList,List groupList){
+    //添加箱场元素
+    @RequestMapping(value = "/addElement")
+    public void addElement(List areaList,List groupList){
         //areaList
         //TODO px2pos
         //TODO px2size
@@ -26,5 +26,17 @@ public class InitController {
         //TODO px2pos
         //TODO px2size
         //TODO px2hb
+    }
+
+    //删除箱场元素
+    @RequestMapping(value = "/deleteElement")
+    public void deleteElement(){
+
+    }
+
+    //修改箱场元素
+    @RequestMapping(value = "updateElemtent")
+    public void updateElement(){
+
     }
 }
