@@ -62,5 +62,14 @@ public class TestController {
 
     }
 
+    public static void main(String[] args) {
+        String a = "(120 120 230)";
+        String[] b = a.split(" ");
+        String c = b[2].replace(")","");
+        int d = Integer.parseInt(c);
+        int x = d + 1;
+        System.out.println(x);
+    }
+
 }
 
