@@ -11,15 +11,11 @@ import java.util.List;
 @RequestMapping(value = "/init")
 public class InitController {
 
-
-
-
-
-
     /**
      *  use AreaVO\GrouopVO get value and put into MODEL to save
      *
      */
+    //画图
     @RequestMapping(value = "/initElement")
     public void initElement(List areaList,List groupList){
         //areaList
