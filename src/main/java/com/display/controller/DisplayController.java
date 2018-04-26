@@ -13,7 +13,10 @@ import java.util.List;
 public class DisplayController {
 
 
-
+    /**
+     *  update databases to get current data
+     * @param response
+     */
     //实时展示
     @RequestMapping(value = "/show")
     public void initContainerYard(HttpServletResponse response){
