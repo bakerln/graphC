@@ -68,7 +68,9 @@ public class TestController {
         String c = b[2].replace(")","");
         int d = Integer.parseInt(c);
         int x = d + 1;
-        System.out.println(x);
+        int y = 4;
+        String newPos = "(" + x + " " + y + ")";
+        System.out.println(newPos);
     }
 
 }
