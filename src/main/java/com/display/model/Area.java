@@ -19,8 +19,10 @@ public class Area {
     private String AreaIsGroup;  //默认值1（True）
     private String AreaScale;  // 展示画面与实际比例，默认0.25
     private Date createTime;  //创建时间
-    private Date updateTime;  //修改时间
     private String userID;  //修改人
+    private String version;  //版本号
+    private String flag;  //1：区域不可用  0：区域可用
+
 
     public String getAreaID() {
         return AreaID;
@@ -110,19 +112,27 @@ public class Area {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
     public String getUserID() {
         return userID;
     }
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }
