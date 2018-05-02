@@ -1,7 +1,6 @@
 package com.display.dao;
 import com.display.model.Area;
 import com.display.model.Group;
-import com.display.vo.AreaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
