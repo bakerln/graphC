@@ -86,4 +86,11 @@ public class InitService {
 
     public void initGroup(ArrayList testList) {
     }
+
+    private String createID(){
+        int id = initDao.createID();
+        String date = initDao.createDate();
+        return date + id;
+    }
+
 }

@@ -25,5 +25,14 @@ public class InitDao {
         return namedParameterJdbcTemplate.update(sql, paramSource);
     }
 
+    //get Area
+    public int createID() {
+        String sql = "select SEQ_TX_ID.Nextval from dual";
+        return jdbcTemplate.queryForObject(sql,Integer.class);
+    }
 
+    public String createDate() {
+        String sql = "select to_char(sysdate,'yyyyMMddHH24mmss') from dual";
+        return jdbcTemplate.queryForObject(sql,String.class);
+    }
 }
