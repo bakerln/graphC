@@ -1,5 +1,6 @@
 package com.display.dao;
 import com.display.model.Area;
+import com.display.model.Group;
 import com.display.vo.AreaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,13 +18,42 @@ public class InitDao {
     private JdbcTemplate jdbcTemplate;
 
 
-    public int initArea (Area area){
+    public int initArea(Area area) {
 
-        String sql = "";
+        String sql = "INSERT INTO JX_TX_AREA (AREA_ID,AREA_KEY,AREA_SIZE,AREA_POS,AREA_NUM,COLOR,STROKE,AREA_CATEGORY,AREA_ISGROUP,AREA_SCALE,CREATETIME,VERSION,USER_ID,FLAG)" +
+                "VALUES(:AreaID,:AreaKey,:AreaSize,:AreaPos,:AreaNum,:color,:stroke,:AreaCategory,:AreaIsGroup,:AreaScale,:createTime,:version,:userID,:flag)";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(area);
         return namedParameterJdbcTemplate.update(sql, paramSource);
     }
+
+    public int deleteAreaOldVersion() {
+
+        String sql ="UPDATE JX_TX_AREA SET FLAG=1 ";
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        SqlParameterSource paramSource = new BeanPropertySqlParameterSource(1 );
+        return namedParameterJdbcTemplate.update(sql, paramSource);
+    }
+
+
+    public int initGroup(Group group) {
+
+        String sql = "INSERT INTO JX_TX_GROUP (GROUP_ID,GROUP_KEY,GROUP_TYPE,GROUP_BELONG,GROUP_NAME,CISPOS,GROUP_SIZE,GROUP_POS,GROUP_CATEGORY,GROUP_ISGROUP,GROUP_SCALE,GROUP_URL,CREATETIME,VERSION,USER_ID,FLAG,GROUP_PX_POS)" +
+                "VALUES(:groupID,:groupKey,:groupType,:groupBelong,:groupName,:cisPos,:groupSize,:groupPos,:groupCategory,:groupIsGroup,:groupScale,:groupUrl,:createTime,:version,:userID,:flag,:GROUP_PX_POS)";
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        SqlParameterSource paramSource = new BeanPropertySqlParameterSource(group);
+        return namedParameterJdbcTemplate.update(sql, paramSource);
+    }
+
+
+    public int deleteGroupOldVersion() {
+
+        String sql ="UPDATE JX_TX_GROUP SET FLAG=1 ";
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        SqlParameterSource paramSource = new BeanPropertySqlParameterSource(1 );
+        return namedParameterJdbcTemplate.update(sql, paramSource);
+    }
+
 
     //get Area
     public int createID() {

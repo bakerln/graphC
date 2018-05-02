@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * Created by Ren on 2018-04-25.
- * Description:
+ * Description:Group model
  */
 
 public class Group {
@@ -14,15 +14,17 @@ public class Group {
     private String groupBelong;  //CraneArea：龙门吊   TruckArea：集卡    BoxArea：箱区   TrainArea：火车  组节点所属区域
     private String groupName;  //车号，集卡号
     private String cisPos;  //顺位号
-    private String groupSize;  //车号，集卡号
+    private String groupSize;  //(H W）容器大小，用实际米数记录
     private String groupPos;  //（H B）区域位置，用行、贝记录
     private String groupCategory;  //默认值OfNodes
     private String groupIsGroup;  //默认值1 (TRUE)
     private String groupScale;  // 展示画面与实际比例，默认0.25
     private String groupUrl;  //火车和集卡图片
     private Date createTime;
-    private Date updateTime;
     private String userID;
+    private String version;
+    private String flag;
+    private String GROUP_PX_POS;
 
     public String getGroupID() {
         return groupID;
@@ -128,19 +130,35 @@ public class Group {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
     public String getUserID() {
         return userID;
     }
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public String getGROUP_PX_POS() {
+        return GROUP_PX_POS;
+    }
+
+    public void setGROUP_PX_POS(String GROUP_PX_POS) {
+        this.GROUP_PX_POS = GROUP_PX_POS;
     }
 }
