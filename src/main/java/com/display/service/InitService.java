@@ -20,9 +20,10 @@ public class InitService {
     private InitDao initDao;
 
 //    public ResultMsg initArea(AreaVO areaVO, Area area) {
-//
+
 //        AreaList areaList = new AreaList();
-//        for (String key : keys.getkeys) ;
+//        for (HashMap key : area) ;
+//         key.get("");
 //         area.setStroke("OfGroups");
 //         area.setAreaScale("0.25");
 //         area.setCreateTime(DateUtil.dateToString(new Date(), "yyyy-MM-dd"));

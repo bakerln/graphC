@@ -21,16 +21,16 @@ public class InitController {
 
 
     /**
-     * 初始化箱场，通过版本记录
+     *  初始化箱场，通过版本记录
      *  use AreaVO\GrouopVO get value and put into MODEL to save
      * @param response
      */
 
     @RequestMapping(value = "/initElement")
-    public void addElement(HttpServletResponse response, String areaList, String groupList){
+    public void addElement(HttpServletResponse response, String areaList, String groupList,String test){
 
-        ArrayList test = (ArrayList) JsonUtil.toObject(areaList,List.class);
-        initService.initArea(test);
+        ArrayList test2 = (ArrayList) JsonUtil.toObject(areaList,List.class);
+        initService.initArea(test2);
         //areaList
         //TODO px2pos
         //TODO px2size
