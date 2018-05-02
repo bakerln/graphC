@@ -5,4 +5,5 @@ package com.common.util;
  * Description:
  */
 public class Testbreach {
+    public String hello;
 }
