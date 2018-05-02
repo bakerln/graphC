@@ -8,7 +8,6 @@ public class CoordinateUtil {
 
     private static final int METER2PX = 6; // 1m = 6px
 
-
     /**
      * meter to px
      * @param oldSize
