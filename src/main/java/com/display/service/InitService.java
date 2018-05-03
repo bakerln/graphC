@@ -84,8 +84,8 @@ public class InitService {
             group.setGroupType("");
             group.setGroupScale("0.25");
             group.setGroupUrl("");
-            //group.setCreateTime(DateUtil.dateToString(new Date(), "yyyy-MM-dd"));
-            group.setVersion(DateUtil.dateToString(new Date(),"yyyyMMddHHmmss"));
+//            group.setVersion(DateUtil.dateToString(new Date(),"yyyyMMddHHmmss"));
+            group.setVersion(initDao.createDate());
             group.setFlag("0");
             //   group.setUserID(session.getuserid);   //目前不涉及到用户
             groupList.add(group);
