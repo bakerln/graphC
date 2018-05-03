@@ -1,5 +1,6 @@
 package com.display.controller;
 import com.config.util.json.JsonUtil;
+import com.config.util.web.WebUtil;
 import com.display.service.InitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,30 +20,22 @@ public class InitController {
     @Autowired
     private InitService initService;
 
-
     /**
      *  初始化箱场，通过版本记录
-     *  use AreaVO\GrouopVO get value and put into MODEL to save
      * @param response
      */
 
     @RequestMapping(value = "/initElement")
-    public void addElement(HttpServletResponse response, String areaList, String groupList,String test){
-
-        ArrayList test2 = (ArrayList) JsonUtil.toObject(areaList,List.class);
-        initService.initArea(test2);
+    public void addElement(HttpServletResponse response, String areaList, String groupList){
         //areaList
-        //TODO px2pos
-        //TODO px2size
+        ArrayList area = (ArrayList) JsonUtil.toObject(areaList,List.class);
+        initService.initArea(area);
 
-        ArrayList test1 = (ArrayList) JsonUtil.toObject(groupList,List.class);
-        initService.initGroup(test1);
         //groupList
-        //TODO px2pos
-        //TODO px2size
-        //TODO px2hb
+        ArrayList group = (ArrayList) JsonUtil.toObject(groupList,List.class);
+        initService.initGroup(group);
 
-
+        WebUtil.out(response, JsonUtil.createOperaStr(true,"init success"));
     }
 
 }
