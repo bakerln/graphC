@@ -88,13 +88,7 @@ public class Area {
         AreaCategory = areaCategory;
     }
 
-    public String getAreaIsGroup() {
-        return AreaIsGroup;
-    }
 
-    public void setAreaIsGroup(String areaIsGroup) {
-        AreaIsGroup = areaIsGroup;
-    }
 
     public String getAreaScale() {
         return AreaScale;
@@ -128,6 +122,14 @@ public class Area {
         this.version = version;
     }
 
+    public String getAreaIsGroup() {
+        return AreaIsGroup;
+    }
+
+    public void setAreaIsGroup(String areaIsGroup) {
+        AreaIsGroup = areaIsGroup;
+    }
+
     public String getFlag() {
         return flag;
     }
@@ -136,3 +138,5 @@ public class Area {
         this.flag = flag;
     }
 }
+
+

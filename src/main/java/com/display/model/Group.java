@@ -98,13 +98,7 @@ public class Group {
         this.groupCategory = groupCategory;
     }
 
-    public String getGroupIsGroup() {
-        return groupIsGroup;
-    }
 
-    public void setGroupIsGroup(String groupIsGroup) {
-        this.groupIsGroup = groupIsGroup;
-    }
 
     public String getGroupScale() {
         return groupScale;
@@ -144,6 +138,14 @@ public class Group {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getGroupIsGroup() {
+        return groupIsGroup;
+    }
+
+    public void setGroupIsGroup(String groupIsGroup) {
+        this.groupIsGroup = groupIsGroup;
     }
 
     public String getFlag() {

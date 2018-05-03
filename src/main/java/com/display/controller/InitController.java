@@ -29,11 +29,11 @@ public class InitController {
     public void addElement(HttpServletResponse response, String areaList, String groupList){
         //areaList
         ArrayList area = (ArrayList) JsonUtil.toObject(areaList,List.class);
-        initService.initArea(area);
+        initService.addInitArea(area);
 
         //groupList
         ArrayList group = (ArrayList) JsonUtil.toObject(groupList,List.class);
-        initService.initGroup(group);
+        initService.addInitGroup(group);
 
         WebUtil.out(response, JsonUtil.createOperaStr(true,"init success"));
     }
