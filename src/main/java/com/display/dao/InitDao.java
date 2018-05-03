@@ -30,7 +30,7 @@ public class InitDao {
 
     public int deleteAreaOldVersion() {
 
-        String sql ="UPDATE JX_TX_AREA SET FLAG=FALSE ";
+        String sql ="UPDATE JX_TX_AREA SET FLAG='1' ";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(1 );
         return namedParameterJdbcTemplate.update(sql, paramSource);
