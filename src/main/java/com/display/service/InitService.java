@@ -46,9 +46,8 @@ public class InitService {
             area.setAreaCategory((String)oneVO.get("category"));
             area.setStroke("");
             area.setAreaScale("0.25");
-            //  area.setCreateTime(DateUtil.dateToString(new Date(), "yyyy-MM-dd"));
-            // area.setUserID(session.getUserID);     //目前不涉及到用户
-            area.setVersion(DateUtil.dateToString(new Date(),"yyyyMMddHHmmss")); //版本号  14位日期
+//            area.setVersion(DateUtil.dateToString(new Date(),"yyyyMMddHHmmss")); //版本号  14位日期
+            area.setVersion(initDao.createDate());
             area.setFlag("0");
 
             //
