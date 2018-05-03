@@ -8,12 +8,31 @@ import java.util.Date;
  */
 public class AreaVO {
         private String key;  //区域类别   CraneArea（龙门吊）/ TruckArea（集卡）/BoxArea（箱区）/ TrainArea（火车）
+        private String name; //名称
         private String size;  //  W,H 区域大小,实际米数
         private String pos;  // X,Y  区域位置，实际米数
         private String num;  // 所含元素
         private String color;  //颜色
         private Boolean isGroup;  //默认值1（True）
         private String category;  //区域类型
+        private String stroke;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStroke() {
+        return stroke;
+    }
+
+    public void setStroke(String stroke) {
+        this.stroke = stroke;
+    }
 
     public String getKey() {
         return key;

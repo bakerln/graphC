@@ -3,11 +3,11 @@ import com.display.model.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.display.dao.InitDao;
 import com.display.model.Area;
-import com.config.util.date.DateUtil;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+
 import com.common.util.CoordinateUtil;
 
 /**
@@ -21,7 +21,7 @@ public class InitService {
     private InitDao initDao;
 
     //初始化箱区
-    public void addInitArea(ArrayList areaList) {
+    public void addInitArea(List areaList) {
 
      //   initDao.deleteAreaOldVersion(); //将旧版本数据置为不可用
 
@@ -58,7 +58,7 @@ public class InitService {
 
 
     //初始化容器
-    public void addInitGroup(ArrayList groupList) {
+    public void addInitGroup(List groupList) {
 
 //        initDao.deleteGroupOldVersion();//将旧版本数据置为不可用
 

@@ -2,12 +2,12 @@ package com.display.controller;
 import com.config.util.json.JsonUtil;
 import com.config.util.web.WebUtil;
 import com.display.service.InitService;
+import com.display.vo.AreaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LiNan on 2018-04-25.
@@ -26,13 +26,24 @@ public class InitController {
      */
 
     @RequestMapping(value = "/initElement")
-    public void addElement(HttpServletResponse response, String areaList, String groupList){
-        //areaList
-        ArrayList area = (ArrayList) JsonUtil.toObject(areaList,List.class);
+    public void addElement(HttpServletResponse response, String diagramValue){
+
+        //分解数据
+        HashMap dataMap = (HashMap) JsonUtil.toObject(diagramValue,Map.class);
+        ArrayList dataList = (ArrayList) dataMap.get("nodeDataArray");
+        List area = new LinkedList();
+        List group = new LinkedList();
+        for (Object data:dataList) {
+           HashMap one = (HashMap) data;
+           if ("OfGroups".equals(one.get("category"))||"OfGroupsT".equals(one.get("category"))){
+               area.add(one);
+           }else {
+               group.add(one);
+           }
+        }
+        //保存数据
         initService.addInitArea(area);
 
-        //groupList
-        ArrayList group = (ArrayList) JsonUtil.toObject(groupList,List.class);
         initService.addInitGroup(group);
 
         WebUtil.out(response, JsonUtil.createOperaStr(true,"init success"));
