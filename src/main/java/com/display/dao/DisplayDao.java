@@ -1,5 +1,7 @@
 package com.display.dao;
 import com.display.model.Area;
+import com.display.model.Group;
+import com.display.model.Container;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -29,7 +31,21 @@ import com.config.util.page.PageUtil;
         List<Area> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Area.class));
         return list;
     }
+        public List<Group> getGroup() {
+            String sql = "select * from JX_TX_GROUP where FLAG = 1";
+            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+            // SqlParameterSource paramSource = new BeanPropertySqlParameterSource(areaVO);
+            List<Group> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Group.class));
+            return list;
+        }
 
+        public List<Container> getContainer() {
+            String sql = "select * from JX_TX_CONTAINER ";
+            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+            // SqlParameterSource paramSource = new BeanPropertySqlParameterSource(areaVO);
+            List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
+            return list;
+        }
 
 
 }

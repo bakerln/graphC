@@ -4,26 +4,30 @@ package com.display.model;
 import java.util.Date;
 
 /**
- * Created by Ren on 2018-04-25.
- * Description:
+ * Created by Ren on 2018-05-13.
+ * Description:箱子数据
  */
 
 
 public class Container {
+
     private String containerID; //集装箱唯一ID
-    private String containerKey;  //元素节点名称B1,B2元素节点名称B1,B2
+    private String containerKey; //元素节点名称B1,B2
     private String containerGroup;  //箱所在组位置: G1,T1,R1
     private String containerName;  //箱号
     private String containerType;  //箱尺寸：20尺，40尺
     private String layer;  //箱所在层数:1\2\3
     private String containerPos;  //（H B）集装箱位置，用行、贝记录
     private String containerSize;  //（H W）集装箱大小，用实际米数记录
-    private String isPlan;  //1计划箱   0实际箱
-    private String containerScale;  // 展示画面与实际比例，默认0.25
+    private String isPlan;  //0实际箱（目前位置）   1计划箱（未搬倒） 2 完结箱（已搬倒完） 3 删除箱（计划删除）
+    private String containerScale;  //
     private String containerUrl;  //集装箱图片
     private Date createTime;
+    private String planTime;  //格式2018-04-27 12:12:12
+    private String arriveTime;  //格式2018-04-27 12:12:12
     private Date updateTime;
     private String userID;
+
 
     public String getContainerID() {
         return containerID;
@@ -111,6 +115,25 @@ public class Container {
 
     public void setContainerUrl(String containerUrl) {
         this.containerUrl = containerUrl;
+    }
+
+
+
+
+    public String getPlanTime() {
+        return planTime;
+    }
+
+    public void setPlanTime(String planTime) {
+        this.planTime = planTime;
+    }
+
+    public String getArriveTime() {
+        return arriveTime;
+    }
+
+    public void setArriveTime(String arriveTime) {
+        this.arriveTime = arriveTime;
     }
 
     public Date getCreateTime() {

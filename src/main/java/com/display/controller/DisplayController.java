@@ -1,6 +1,4 @@
 package com.display.controller;
-import com.display.vo.GroupVO;
-import com.display.vo.AreaVO;
 import com.display.service.DisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,8 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import com.display.model.Area;
+import com.display.model.Group;
+import com.display.model.Container;
 
 /**
  * Created by LiNan on 2018-04-25.
@@ -37,14 +37,14 @@ public class DisplayController {
     public void initContainerYard(HttpServletResponse response){
         List<Area> areaList = displayService.getArea();
 
-        //List<GroupVO> groupList = displayService.getGroup();
+        List<Group> groupList = displayService.getGroup();
 
-       // List<Container> containerList = initContainerService.getContainer();
+       List<Container> containerList = displayService.getContainer();
 
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
-      //  initMap.put("groupList",groupList);
-       // initMap.put("containerList",containerList);
+        initMap.put("groupList",groupList);
+        initMap.put("containerList",containerList);
 
         WebUtil.out(response, JsonUtil.toStr(initMap));
 
