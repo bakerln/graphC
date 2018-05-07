@@ -1,13 +1,14 @@
 package com.display.vo;
 
+import com.display.model.Group;
+
 import java.util.Date;
 
 /**
  * Created by LiNan on 2018-04-26.
  * Description:
  */
-public class GroupVO {
-    private String groupID;  //容器ID
+public class GroupVO extends Group {
     private String groupKey;  //组节点名称，唯一标识 G表示箱位，T表示集卡，R表示火车，L表示龙门吊
     private String groupType;  //G表示箱位，T表示集卡，R表示火车，L表示龙门吊
     private String groupBelong;  //CraneArea：龙门吊   TruckArea：集卡    BoxArea：箱区   TrainArea：火车  组节点所属区域
@@ -17,19 +18,8 @@ public class GroupVO {
     private String groupPos;  //（H B）区域位置，用行、贝记录
     private String groupCategory;  //默认值OfNodes
     private String groupIsGroup;  //默认值1 (TRUE)
-    private String groupScale;  // 展示画面与实际比例，默认0.25
-    private String groupUrl;  //火车和集卡图片
-    private String createTime;
-    private String updateTime;
-    private String userID;
+    private String GROUP_PX_POS;
 
-    public String getGroupID() {
-        return groupID;
-    }
-
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
-    }
 
     public String getGroupKey() {
         return groupKey;
@@ -103,43 +93,12 @@ public class GroupVO {
         this.groupIsGroup = groupIsGroup;
     }
 
-    public String getGroupScale() {
-        return groupScale;
+    public String getGROUP_PX_POS() {
+        return GROUP_PX_POS;
     }
 
-    public void setGroupScale(String groupScale) {
-        this.groupScale = groupScale;
-    }
-
-    public String getGroupUrl() {
-        return groupUrl;
-    }
-
-    public void setGroupUrl(String groupUrl) {
-        this.groupUrl = groupUrl;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setGROUP_PX_POS(String GROUP_PX_POS) {
+        this.GROUP_PX_POS = GROUP_PX_POS;
     }
 }
+

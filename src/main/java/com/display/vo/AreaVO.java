@@ -1,14 +1,15 @@
 package com.display.vo;
 
+import com.display.model.Area;
+
 import java.util.Date;
 
 /**
  * Created by LiNan on 2018-04-25.
  * Description:
  */
-public class AreaVO {
+public class AreaVO extends Area {
         private String key;  //区域类别   CraneArea（龙门吊）/ TruckArea（集卡）/BoxArea（箱区）/ TrainArea（火车）
-        private String name; //名称
         private String size;  //  W,H 区域大小,实际米数
         private String pos;  // X,Y  区域位置，实际米数
         private String num;  // 所含元素
@@ -17,14 +18,6 @@ public class AreaVO {
         private String category;  //区域类型
         private String stroke;
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getStroke() {
         return stroke;
