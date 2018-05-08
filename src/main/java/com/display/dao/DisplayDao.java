@@ -22,6 +22,13 @@ import com.config.util.page.PageUtil;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+//        public String getAreaFlag() {
+//            String sql = "select * from JX_TX_AREA where FLAG = 1";
+//            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+//            SqlParameterSource paramSource = new BeanPropertySqlParameterSource(0);
+//            return String.valueOf(namedParameterJdbcTemplate.update(sql, paramSource));
+//        }
+
 
 
     public List<Area> getArea() {
