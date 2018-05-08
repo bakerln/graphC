@@ -19,12 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 public class GlobalExceptionHandler {
     private static Logger logger = LoggerFactory.getLogger("sysLog");
 
-//    @ExceptionHandler(value = Exception.class)
-//    public void defaultErrorHandler(HttpServletResponse httpServletResponse,Exception e){
+    @ExceptionHandler(value = Exception.class)
+    public void defaultErrorHandler(HttpServletResponse httpServletResponse,Exception e){
 //        logger.error("实体类: GlobalExcepton");
 //        logger.error("异常类型: " + e.getClass());
 //        logger.error("异常信息: " + e.getMessage());
-//        ResultMsg resultMsg = new ResultMsg("01","GlobalException","异常类型: " + e.getClass() + "  异常信息: " + e.getMessage());
-//        WebUtil.out(httpServletResponse,JsonUtil.createOperaStr(true,"GlobalException",resultMsg));
-//    }
+        ResultMsg resultMsg = new ResultMsg("01","GlobalException","异常类型: " + e.getClass() + "  异常信息: " + e.getMessage());
+        WebUtil.out(httpServletResponse,JsonUtil.createOperaStr(true,"GlobalException",resultMsg));
+    }
 }

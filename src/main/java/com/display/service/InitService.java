@@ -38,7 +38,7 @@ public class InitService {
             area.setAreaKey((String) oneVO.get(""));
             area.setAreaSize(newSize);
             area.setAreaPos(newpos);
-            area.setAreaID(createID());
+            area.setAreaID(createID("a"));
             area.setAreaKey((String) oneVO.get("key"));
             area.setAreaNum((String) oneVO.get("num"));
             area.setColor((String) oneVO.get("color"));
@@ -77,7 +77,7 @@ public class InitService {
             group.setCisPos((String) twoVO.get("cisPos"));
             group.setGroupPos((String) twoVO.get("groupPos"));
             group.setGROUP_PX_POS((String) twoVO.get("pos"));
-            group.setGroupID(createID());
+            group.setGroupID(createID("g"));
             group.setGroupType("");
             group.setGroupScale("0.25");
             group.setGroupUrl("");
@@ -92,10 +92,15 @@ public class InitService {
         }
     }
 
-    private String createID(){
+    /**
+     *
+     * @param flag id属性，Area:a /Group:p/ Container:c
+     * @return
+     */
+    private String createID(String flag){
         int id = initDao.createID();
         String date = initDao.createDate();
-        return date + id;
+        return flag + date + id;
     }
 
 }
