@@ -78,13 +78,13 @@ import com.config.util.page.PageUtil;
             return list;
         }
 
-        public Container getContainerByID(List oldContainerList) {
+        public Container getContainerByID(String oldContainerList) {
             Object[] params = new Object[] { oldContainerList };
             String sql = "select * from JX_TX_CONTAINER where ID=?";
             List<Container> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Container.class));
             return list.get(0);
         }
 
-        public String getNewContainerID(String oldContainerID) {
-        }
+//        public String getNewContainerID(String oldContainerID) {
+//        }
     }

@@ -2,7 +2,6 @@ package com.display.controller;
 import com.config.util.json.JsonUtil;
 import com.config.util.web.WebUtil;
 import com.display.service.InitService;
-import com.display.vo.AreaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

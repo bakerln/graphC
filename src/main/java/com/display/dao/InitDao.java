@@ -1,7 +1,6 @@
 package com.display.dao;
 import com.display.model.Area;
 import com.display.model.Group;
-import com.display.service.InitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class InitDao {
 
-    @Autowired  private InitService initService;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -28,7 +26,7 @@ public class InitDao {
         return namedParameterJdbcTemplate.update(sql, paramSource);
     }
 
-    public int deleteAreaOldVersion() {
+    public int updateAreaVersion() {
 
         String sql ="UPDATE JX_TX_AREA SET FLAG='1' ";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
@@ -47,9 +45,9 @@ public class InitDao {
     }
 
 
-    public int deleteGroupOldVersion() {
+    public int updateGroupVersion() {
 
-        String sql ="UPDATE JX_TX_GROUP SET FLAG=FALSE ";
+        String sql ="UPDATE JX_TX_GROUP SET FLAG = '1' ";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(1 );
         return namedParameterJdbcTemplate.update(sql, paramSource);

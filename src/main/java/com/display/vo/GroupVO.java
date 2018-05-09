@@ -21,6 +21,7 @@ public class GroupVO extends Group {
     private String pos;
     private String id;
 
+
     public String getKey() {
         return key;
     }

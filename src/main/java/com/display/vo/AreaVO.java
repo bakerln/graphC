@@ -9,6 +9,7 @@ import java.util.Date;
  * Description:
  */
 public class AreaVO extends Area {
+        private String ID;
         private String key;  //区域类别   CraneArea（龙门吊）/ TruckArea（集卡）/BoxArea（箱区）/ TrainArea（火车）
         private String size;  //  W,H 区域大小,实际米数
         private String pos;  // X,Y  区域位置，实际米数
@@ -18,6 +19,13 @@ public class AreaVO extends Area {
         private String category;  //区域类型
         private String stroke;
 
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public String getStroke() {
         return stroke;
