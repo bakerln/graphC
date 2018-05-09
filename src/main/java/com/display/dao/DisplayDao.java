@@ -4,7 +4,10 @@ import com.display.model.Group;
 import com.display.model.Container;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.display.vo.AreaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -54,5 +57,19 @@ import com.config.util.page.PageUtil;
             return list;
         }
 
+        public List<Container> getOldContainerList(HashMap oneVo) {
+            String sql = "select * from JX_TX_CONTAINER where CONTAINER_ID:=oldContainerID ";
+            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+            SqlParameterSource paramSource = new BeanPropertySqlParameterSource(oneVo);
+            List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
+            return list;
+        }
 
-}
+        public List<Container> getNewContainerList(HashMap oneVo) {
+            String sql = "select JX_TX_CONTAINER.* from JX_TX_CONTAINER where JX_TX_CONTAINER.CONTAINER_ID=(select max(JX_TX_PLAN.NEW_CONTAINER_ID) from JX_TX_PLAN where JX_TX_PLAN.OLD_CONTAINER_ID:=oldContainerID) ";
+            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+            SqlParameterSource paramSource = new BeanPropertySqlParameterSource(oneVo);
+            List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
+            return list;
+        }
+    }

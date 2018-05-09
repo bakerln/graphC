@@ -3,15 +3,14 @@ package com.display.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.common.util.CoordinateUtil;
 import com.display.dao.DisplayDao;
-import com.display.model.Area;
-import com.display.model.AreaTest;
-import com.display.model.Group;
-import com.display.model.Container;
+import com.display.model.*;
 import com.display.vo.AreaVO;
 import com.display.vo.GroupVO;
+import com.display.vo.ContainerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,20 +57,21 @@ public class DisplayService {
         if (0 != groupList.size()) {
             ArrayList<Group> test2 = new ArrayList<>();
             for (Object one : groupList) {   //循环取读到的值
-                GroupVO oneVo = (GroupVO) one;   //将list中的每一个数组封装成一个VO
+                Group oneVo = (Group) one;   //将list中的每一个数组封装成一个VO
                 String size = oneVo.getGroupSize();   //进行尺寸的米to坐标的转换
                 String newSize = CoordinateUtil.convertM2P(size);
 
                 GroupVO groupVO = new GroupVO();   //将所有数据封装到新VO中
-                groupVO.setGroupKey(oneVo.getGroupKey());
-                groupVO.setGroupIsGroup(((GroupVO) one).getGroupIsGroup());
-                groupVO.setGroupBelong(oneVo.getGroupBelong());
-                groupVO.setGroupCategory(oneVo.getGroupCategory());
-                groupVO.setGroupSize(newSize);
-                groupVO.setGROUP_PX_POS(oneVo.getGROUP_PX_POS());
-                groupVO.setGroupName(oneVo.getGroupName());
+                groupVO.setId(oneVo.getGroupID());
+                groupVO.setKey(oneVo.getGroupKey());
+                groupVO.setIsGroup(oneVo.getGroupIsGroup());
+                groupVO.setGroup(oneVo.getGroupBelong());
+                groupVO.setCategory(oneVo.getGroupCategory());
+                groupVO.setSize(newSize);
+                groupVO.setPos(oneVo.getGROUP_PX_POS());
+                groupVO.setName(oneVo.getGroupName());
                 groupVO.setCisPos(oneVo.getCisPos());
-                groupVO.setGroupPos(oneVo.getGroupPos());
+                groupVO.setPos(oneVo.getGroupPos());
                 groupList.add(groupVO);    //重新生成groupList
             }
             return groupList;
@@ -83,5 +83,64 @@ public class DisplayService {
         return containerList;
     }
 
+    public List<Plan> planSingleOld(List oldContainerList){
+        ArrayList<Plan> test2 = new ArrayList<>();
+        for (Object one : oldContainerList) {
+            HashMap oneVo = (HashMap)oldContainerList.get(0);
+            String old = (String)oneVo.get("oldContainerID");
+            displayDao.getOldContainerList(oneVo);
+
+            ArrayList<Container> test3 = new ArrayList<>();
+            Object two = new Object();
+            Container twoVO = (Container) two;   //将list中的每一个数组封装成一个VO
+            String size = twoVO.getContainerSize();  //进行尺寸的米to坐标的转换
+            String newSize = CoordinateUtil.convertM2P(size);
+
+
+            ContainerVO containerVO = new ContainerVO();   //将所有数据封装到新VO中
+            containerVO.setContainerID(twoVO.getContainerID());
+            containerVO.setKey(twoVO.getContainerKey());
+            containerVO.setGroup(twoVO.getContainerGroup());
+            containerVO.setName(twoVO.getContainerName());
+            containerVO.setType(twoVO.getContainerType());
+            containerVO.setLayer(twoVO.getLayer());
+            containerVO.setPos(twoVO.getContainerPos());
+            containerVO.setSize(newSize);
+            containerVO.setIsPlan(twoVO.getIsPlan());
+            containerVO.setUrl(twoVO.getContainerUrl());
+            oldContainerList.add(containerVO);  //生成oldContainerList
+        }
+            return oldContainerList;
+    }
+
+
+
+    public List<Plan> planSingleNew(List newContainerList){
+        ArrayList<Plan> test2 = new ArrayList<>();
+        for (Object one : newContainerList) {
+            HashMap oneVo = (HashMap) newContainerList.get(0);
+            String old = (String) oneVo.get("oldContainerID");
+            displayDao.getNewContainerList(oneVo);
+            ArrayList<Container> test3 = new ArrayList<>();
+            Object two = new Object();
+            Container twoVO = (Container) two;   //将list中的每一个数组封装成一个VO
+            String size = twoVO.getContainerSize();  //进行尺寸的米to坐标的转换
+            String newSize = CoordinateUtil.convertM2P(size);
+
+
+            ContainerVO containerVO = new ContainerVO();   //将所有数据封装到新VO中
+            containerVO.setContainerID(twoVO.getContainerID());
+            containerVO.setKey(twoVO.getContainerKey());
+            containerVO.setGroup(twoVO.getContainerGroup());
+            containerVO.setName(twoVO.getContainerName());
+            containerVO.setType(twoVO.getContainerType());
+            containerVO.setLayer(twoVO.getLayer());
+            containerVO.setPos(twoVO.getContainerPos());
+            containerVO.setSize(newSize);
+            containerVO.setIsPlan(twoVO.getIsPlan());
+            containerVO.setUrl(twoVO.getContainerUrl());
+        }
+        return newContainerList;
+    }
 
 }

@@ -1,4 +1,5 @@
 package com.display.controller;
+import com.display.model.Plan;
 import com.display.service.DisplayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import java.util.Map;
 import com.display.model.Area;
 import com.display.model.Group;
 import com.display.model.Container;
+import java.util.ArrayList;
 
 /**
  * Created by LiNan on 2018-04-25.
@@ -78,10 +80,20 @@ public class DisplayController {
 
     //单个集装箱
     @RequestMapping(value = "/planSingle")
-    public void planSingle(String containerName){
-        //TODO return all and the one for current and plan
-        //TODO and change url
+    public void planSingle(HttpServletResponse response,String containerList,String containerID ){
+        ArrayList test2 = (ArrayList) JsonUtil.toObject(containerList,List.class);
+        List<Plan> oldContainerList = displayService.planSingleOld(test2);
+        List<Plan> newContainerList = displayService.planSingleNew(test2);
+        List<Area> areaList = displayService.getArea();
+        List<Group> groupList = displayService.getGroup();
 
+        Map initMap = new HashMap();
+        initMap.put("areaList",areaList);
+        initMap.put("groupList",groupList);
+        initMap.put("oldContainerList",oldContainerList);
+        initMap.put("newContainerList",newContainerList);
+
+        WebUtil.out(response, JsonUtil.toStr(initMap));
     }
 
     //一个区域数据

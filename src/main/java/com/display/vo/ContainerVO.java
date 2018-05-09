@@ -8,19 +8,15 @@ import java.util.Date;
  */
 public class ContainerVO {
     private String containerID; //集装箱唯一ID
-    private String containerKey;  //元素节点名称B1,B2元素节点名称B1,B2
-    private String containerGroup;  //箱所在组位置: G1,T1,R1
-    private String containerName;  //箱号
-    private String containerType;  //箱尺寸：20尺，40尺
+    private String Key;  //元素节点名称B1,B2元素节点名称B1,B2
+    private String group;  //箱所在组位置: G1,T1,R1
+    private String name;  //箱号
+    private String type;  //箱尺寸：20尺，40尺
     private String layer;  //箱所在层数:1\2\3
-    private String containerPos;  //（H B）集装箱位置，用行、贝记录
-    private String containerSize;  //（H W）集装箱大小，用实际米数记录
+    private String pos;  //（H B）集装箱位置，用行、贝记录
+    private String size;  //（H W）集装箱大小，用实际米数记录
     private String isPlan;  //1计划箱   0实际箱
-    private String containerScale;  // 展示画面与实际比例，默认0.25
-    private String containerUrl;  //集装箱图片
-    private String createTime;
-    private String updateTime;
-    private String userID;
+    private String url;  //集装箱图片
 
     public String getContainerID() {
         return containerID;
@@ -30,36 +26,36 @@ public class ContainerVO {
         this.containerID = containerID;
     }
 
-    public String getContainerKey() {
-        return containerKey;
+    public String getKey() {
+        return Key;
     }
 
-    public void setContainerKey(String containerKey) {
-        this.containerKey = containerKey;
+    public void setKey(String key) {
+        Key = key;
     }
 
-    public String getContainerGroup() {
-        return containerGroup;
+    public String getGroup() {
+        return group;
     }
 
-    public void setContainerGroup(String containerGroup) {
-        this.containerGroup = containerGroup;
+    public void setGroup(String group) {
+        this.group = group;
     }
 
-    public String getContainerName() {
-        return containerName;
+    public String getName() {
+        return name;
     }
 
-    public void setContainerName(String containerName) {
-        this.containerName = containerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getContainerType() {
-        return containerType;
+    public String getType() {
+        return type;
     }
 
-    public void setContainerType(String containerType) {
-        this.containerType = containerType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getLayer() {
@@ -70,20 +66,20 @@ public class ContainerVO {
         this.layer = layer;
     }
 
-    public String getContainerPos() {
-        return containerPos;
+    public String getPos() {
+        return pos;
     }
 
-    public void setContainerPos(String containerPos) {
-        this.containerPos = containerPos;
+    public void setPos(String pos) {
+        this.pos = pos;
     }
 
-    public String getContainerSize() {
-        return containerSize;
+    public String getSize() {
+        return size;
     }
 
-    public void setContainerSize(String containerSize) {
-        this.containerSize = containerSize;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public String getIsPlan() {
@@ -94,43 +90,11 @@ public class ContainerVO {
         this.isPlan = isPlan;
     }
 
-    public String getContainerScale() {
-        return containerScale;
+    public String getUrl() {
+        return url;
     }
 
-    public void setContainerScale(String containerScale) {
-        this.containerScale = containerScale;
-    }
-
-    public String getContainerUrl() {
-        return containerUrl;
-    }
-
-    public void setContainerUrl(String containerUrl) {
-        this.containerUrl = containerUrl;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

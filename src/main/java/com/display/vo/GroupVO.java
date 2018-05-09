@@ -9,48 +9,48 @@ import java.util.Date;
  * Description:
  */
 public class GroupVO extends Group {
-    private String groupKey;  //组节点名称，唯一标识 G表示箱位，T表示集卡，R表示火车，L表示龙门吊
-    private String groupType;  //G表示箱位，T表示集卡，R表示火车，L表示龙门吊
-    private String groupBelong;  //CraneArea：龙门吊   TruckArea：集卡    BoxArea：箱区   TrainArea：火车  组节点所属区域
-    private String groupName;  //车号，集卡号
+    private String key;  //组节点名称，唯一标识 G表示箱位，T表示集卡，R表示火车，L表示龙门吊
+    private String type;  //G表示箱位，T表示集卡，R表示火车，L表示龙门吊
+    private String group;  //CraneArea：龙门吊   TruckArea：集卡    BoxArea：箱区   TrainArea：火车  组节点所属区域
+    private String name;  //车号，集卡号
     private String cisPos;  //顺位号
-    private String groupSize;  //车号，集卡号
+    private String size;  //车号，集卡号
     private String groupPos;  //（H B）区域位置，用行、贝记录
-    private String groupCategory;  //默认值OfNodes
-    private String groupIsGroup;  //默认值1 (TRUE)
-    private String GROUP_PX_POS;
+    private String category;  //默认值OfNodes
+    private String isGroup;  //默认值1 (TRUE)
+    private String pos;
+    private String id;
 
-
-    public String getGroupKey() {
-        return groupKey;
+    public String getKey() {
+        return key;
     }
 
-    public void setGroupKey(String groupKey) {
-        this.groupKey = groupKey;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public String getGroupType() {
-        return groupType;
+    public String getType() {
+        return type;
     }
 
-    public void setGroupType(String groupType) {
-        this.groupType = groupType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getGroupBelong() {
-        return groupBelong;
+    public String getGroup() {
+        return group;
     }
 
-    public void setGroupBelong(String groupBelong) {
-        this.groupBelong = groupBelong;
+    public void setGroup(String group) {
+        this.group = group;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getName() {
+        return name;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCisPos() {
@@ -61,12 +61,12 @@ public class GroupVO extends Group {
         this.cisPos = cisPos;
     }
 
-    public String getGroupSize() {
-        return groupSize;
+    public String getSize() {
+        return size;
     }
 
-    public void setGroupSize(String groupSize) {
-        this.groupSize = groupSize;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public String getGroupPos() {
@@ -77,28 +77,36 @@ public class GroupVO extends Group {
         this.groupPos = groupPos;
     }
 
-    public String getGroupCategory() {
-        return groupCategory;
+    public String getCategory() {
+        return category;
     }
 
-    public void setGroupCategory(String groupCategory) {
-        this.groupCategory = groupCategory;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getGroupIsGroup() {
-        return groupIsGroup;
+    public String getIsGroup() {
+        return isGroup;
     }
 
-    public void setGroupIsGroup(String groupIsGroup) {
-        this.groupIsGroup = groupIsGroup;
+    public void setIsGroup(String isGroup) {
+        this.isGroup = isGroup;
     }
 
-    public String getGROUP_PX_POS() {
-        return GROUP_PX_POS;
+    public String getPos() {
+        return pos;
     }
 
-    public void setGROUP_PX_POS(String GROUP_PX_POS) {
-        this.GROUP_PX_POS = GROUP_PX_POS;
+    public void setPos(String pos) {
+        this.pos = pos;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 
