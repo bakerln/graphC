@@ -1,6 +1,6 @@
 package com.display.controller;
-import com.display.model.Plan;
 import com.display.service.DisplayService;
+import com.display.vo.ContainerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,16 +38,10 @@ public class DisplayController {
     @RequestMapping(value = "/showArea")
     public void initContainerYard(HttpServletResponse response){
         List<Area> areaList = displayService.getArea();
-
         List<Group> groupList = displayService.getGroup();
-
-       List<Container> containerList = displayService.getContainer();
-
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);
-        initMap.put("containerList",containerList);
-
         WebUtil.out(response, JsonUtil.toStr(initMap));
 
         //TODO px2pos
@@ -66,40 +60,49 @@ public class DisplayController {
     @RequestMapping(value = "/show")
     public void show(HttpServletResponse response){
         //areaList
-        //TODO px2pos
-        //TODO px2size
+        List<Area> areaList = displayService.getArea();
 
         //groupList
-        //TODO px2pos
-        //TODO px2size
+        List<Group> groupList = displayService.getGroup();
 
         //containerList
-        //TODO px2pos
-        //TODO px2size
+        List<Container> containerList = displayService.getContainer();
+
+        Map initMap = new HashMap();
+        initMap.put("areaList",areaList);
+        initMap.put("groupList",groupList);
+        initMap.put("containerList",containerList);
+
+        WebUtil.out(response, JsonUtil.toStr(initMap));
     }
 
     //单个集装箱
     @RequestMapping(value = "/planSingle")
-    public void planSingle(HttpServletResponse response,String containerList,String containerID ){
-        ArrayList test2 = (ArrayList) JsonUtil.toObject(containerList,List.class);
-        List<Plan> oldContainerList = displayService.planSingleOld(test2);
-        List<Plan> newContainerList = displayService.planSingleNew(test2);
+    public void planSingle(HttpServletResponse response,String containerID){
+        ArrayList oldContainerList = (ArrayList) JsonUtil.toObject(containerID,List.class);
+        String oldContainerID = (String)oldContainerList.get(3);
+        String newContainerID = displayService.getNewContainerID(oldContainerID);
+        ContainerVO oldContainer = displayService.getContainerByID(oldContainerID);
+        ContainerVO newContainer = displayService.getContainerByID(newContainerID);
+        //areaList
         List<Area> areaList = displayService.getArea();
+        //groupList
         List<Group> groupList = displayService.getGroup();
 
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);
-        initMap.put("oldContainerList",oldContainerList);
-        initMap.put("newContainerList",newContainerList);
+        initMap.put("oldContainerList",oldContainer);
+        initMap.put("newContainerList",newContainer);
 
         WebUtil.out(response, JsonUtil.toStr(initMap));
     }
 
     //一个区域数据
     @RequestMapping(value = "planArea")
-    public void planArea(List containerNameList){
-        //TODO return all and the area for current and plan
-        //TODO and change url
+    public void planArea(String  containerNameList){
+        //TODO get containerList via JX_TX_GROUP (group_belong = area key)
+
+        //
     }
 }

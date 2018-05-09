@@ -83,16 +83,22 @@ public class DisplayService {
         return containerList;
     }
 
-    public List<Plan> planSingleOld(List oldContainerList){
+    public ContainerVO planSingleOld(List oldContainerList){
+        //TODO get old Container by id
+        ContainerVO oldContainer = displayDao.getContainerByID(oldContainerList);
+
+
+        //TODO return Container
+
+        return oldContainer;
         ArrayList<Plan> test2 = new ArrayList<>();
         for (Object one : oldContainerList) {
             HashMap oneVo = (HashMap)oldContainerList.get(0);
             String old = (String)oneVo.get("oldContainerID");
-            displayDao.getOldContainerList(oneVo);
+            List<Container> test3 = displayDao.getOldContainerList(oneVo);
 
-            ArrayList<Container> test3 = new ArrayList<>();
-            Object two = new Object();
-            Container twoVO = (Container) two;   //将list中的每一个数组封装成一个VO
+            //
+            Container twoVO = new Container();   //将list中的每一个数组封装成一个VO
             String size = twoVO.getContainerSize();  //进行尺寸的米to坐标的转换
             String newSize = CoordinateUtil.convertM2P(size);
 
@@ -110,12 +116,12 @@ public class DisplayService {
             containerVO.setUrl(twoVO.getContainerUrl());
             oldContainerList.add(containerVO);  //生成oldContainerList
         }
-            return oldContainerList;
+            return containerVO;
     }
 
 
 
-    public List<Plan> planSingleNew(List newContainerList){
+    public ContainerVO planSingleNew(List newContainerList){
         ArrayList<Plan> test2 = new ArrayList<>();
         for (Object one : newContainerList) {
             HashMap oneVo = (HashMap) newContainerList.get(0);
@@ -143,4 +149,16 @@ public class DisplayService {
         return newContainerList;
     }
 
+    public String getNewContainerID(String oldContainerID) {
+        return displayDao.getNewContainerID(oldContainerID);
+    }
+
+    public ContainerVO getContainerByID(String oldContainerID) {
+        //TODO get old Container by id
+        ContainerVO container = displayDao.getContainerByID(oldContainerID);
+
+
+        //TODO return Container
+        return container;
+    }
 }
