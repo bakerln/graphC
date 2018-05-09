@@ -17,9 +17,9 @@ public class CoordinateUtil {
         String[] size = oldSize.split(" ");
         String wString = size[0].replace("(","");
         String hString = size[1].replace(")","");
-        int w = Integer.parseInt(wString)*METER2PX;
-        int h = Integer.parseInt(hString)*METER2PX;
-        return "(" + w + " " + h + ")";
+        float w = Float.parseFloat(wString)*METER2PX;
+        float h = Float.parseFloat(hString)*METER2PX;
+        return w + " " + h ;
     }
 
 
@@ -34,7 +34,7 @@ public class CoordinateUtil {
         String hString = size[1].replace(")","");
         double w = Integer.parseInt(wString)/METER2PX + Integer.parseInt(wString)%METER2PX*0.1;
         double h = Integer.parseInt(hString)/METER2PX + Integer.parseInt(hString)%METER2PX*0.1;
-        return "(" + w + " " + h + ")";
+        return w + " " + h;
     }
 
     public static void main(String[] args) {

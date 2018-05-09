@@ -19,28 +19,28 @@ public class InitService {
     private InitDao initDao;
 
     //初始化箱区
-    public void addInitArea(List areaVOList) {
+    public void addInitArea(List areaVOList, String version) {
 
         initDao.updateAreaVersion(); //将旧版本数据置为不可用
+        //保存
         for (Object one : areaVOList) {               //循环从list中取数
             HashMap oneVO = (HashMap) one;  //将每次循环出来的数据封装成一个 oneVO
              //转换
             String newSize = CoordinateUtil.convertP2M((String) oneVO.get("size"));
-            String newpos = CoordinateUtil.convertP2M((String) oneVO.get("pos"));
 
             //将数据封装到model
             Area area = new Area();
-            area.setAreaID(createID("A"));
+            area.setArea_id(createID("A"));
             area.setAreaKey((String) oneVO.get("key"));
             area.setAreaSize(newSize);
-            area.setAreaPos(newpos);
+            area.setAreaPos((String) oneVO.get("pos"));
             area.setAreaNum((String) oneVO.get("num"));
             area.setColor((String) oneVO.get("color"));
             area.setStroke((String) oneVO.get("stroke"));
             area.setAreaCategory((String) oneVO.get("category"));
-            area.setAreaIsGroup("1");
+            area.setArea_id("1");
             area.setAreaScale("0.25");
-            area.setVersion(initDao.createDate()); //版本号  14位日期
+            area.setVersion(version); //版本号  14位日期
             area.setFlag("0");
             area.setUserID("");
             area.setAreaNum("4");
@@ -53,7 +53,7 @@ public class InitService {
 
 
     //初始化容器
-    public void addInitGroup(List groupList) {
+    public void addInitGroup(List groupList, String version) {
 
         initDao.updateGroupVersion();//将旧版本数据置为不可用
 
@@ -76,12 +76,16 @@ public class InitService {
             group.setGroupIsGroup("1");
             group.setGroupScale("0.25");
             group.setGroupUrl("");
-            group.setVersion(initDao.createDate());
+            group.setVersion(version);
             group.setFlag("0");
             group.setUserID("");
 
             initDao.addInitGroup(group);
         }
+    }
+
+    public String getVersion(){
+        return initDao.createDate();
     }
 
     /**
@@ -94,5 +98,4 @@ public class InitService {
         String date = initDao.createDate();
         return flag + date + id;
     }
-
 }

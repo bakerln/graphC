@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by LiNan on 2018-04-26.
  * Description:
  */
-public class GroupVO extends Group {
+public class GroupVO{
     private String key;  //组节点名称，唯一标识 G表示箱位，T表示集卡，R表示火车，L表示龙门吊
     private String type;  //G表示箱位，T表示集卡，R表示火车，L表示龙门吊
     private String group;  //CraneArea：龙门吊   TruckArea：集卡    BoxArea：箱区   TrainArea：火车  组节点所属区域

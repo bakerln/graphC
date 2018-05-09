@@ -1,9 +1,6 @@
 package com.display.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.common.util.CoordinateUtil;
 import com.display.dao.DisplayDao;
@@ -27,37 +24,40 @@ public class DisplayService {
 
 
     //图形展示
-    public List<Area> getArea() {
-        //得到可用的AreaList(flag==1)
+    public List<AreaVO> getArea() {
+        //得到可用的AreaList(flag==0)
         List<Area> areaList = displayDao.getArea();
+        List<AreaVO> showList = new LinkedList();
         if (0 != areaList.size()) {
             for (Object one : areaList) {      //循环取读到的值
-                AreaVO oneVO = (AreaVO) one;   //将list中的每一个数组封装成一个VO
+                Area area = (Area) one;   //将list中的每一个数组封装成一个VO
                 //转换
-                String newSize = CoordinateUtil.convertM2P(oneVO.getSize());
-                String newPos = CoordinateUtil.convertM2P(oneVO.getPos());
+                String newSize = CoordinateUtil.convertM2P(area.getAreaSize());
 
                 //展示VO
                 AreaVO areaVO = new AreaVO();
-                areaVO.setID(oneVO.getID());
-                areaVO.setKey(oneVO.getKey());
-                areaVO.setGroup(oneVO.getGroup());
-                areaVO.setCategory(oneVO.getCategory());
-                areaVO.setSize(newSize);
-                areaVO.setPos(newPos);
-                areaVO.setColor(oneVO.getColor());
-                areaVO.setNum(oneVO.getNum());
-                areaVO.setStroke(oneVO.getStroke());
+                areaVO.setID(area.getArea_id());
+                areaVO.setKey(area.getAreaKey());
 
-                areaList.add(areaVO);  //重新生成areaList
+                areaVO.setGroup(area.getArea_isGroup()=="1"?true:false);
+                areaVO.setCategory(area.getAreaCategory());
+                areaVO.setSize(newSize);
+                areaVO.setPos(area.getAreaPos());
+                areaVO.setColor(area.getColor());
+                areaVO.setNum(area.getAreaNum());
+                areaVO.setStroke(area.getStroke());
+
+                showList.add(areaVO);  //重新生成areaList
             }
-            return areaList;
+            return showList;
         } else
             return null;
     }
 
-    public List<Group> getGroup() {
+    public List<GroupVO> getGroup() {
+        //得到可用的GroupList(flag==0)
         List<Group> groupList = displayDao.getGroup();
+        List<GroupVO> showList = new LinkedList();
         if (0 != groupList.size()) {
             for (Object one : groupList) {   //循环取读到的值
                 Group oneVO = (Group) one;   //将list中的每一个数组封装成一个VO
@@ -77,9 +77,9 @@ public class DisplayService {
                 groupVO.setCisPos(oneVO.getCisPos());
                 groupVO.setGroupPos(oneVO.getGroupPos());
 
-                groupList.add(groupVO);    //重新生成groupList
+                showList.add(groupVO);    //重新生成groupList
             }
-            return groupList;
+            return showList;
         } else
             return null;
     }

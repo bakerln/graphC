@@ -40,10 +40,13 @@ public class InitController {
                group.add(one);
            }
         }
-        //保存数据
-        initService.addInitArea(area);
+        //Version
+        String version = initService.getVersion();
 
-        initService.addInitGroup(group);
+        //保存数据
+        initService.addInitArea(area,version);
+
+        initService.addInitGroup(group,version);
 
         WebUtil.out(response, JsonUtil.createOperaStr(true,"init success"));
     }

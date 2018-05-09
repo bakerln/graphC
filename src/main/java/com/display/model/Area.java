@@ -8,15 +8,15 @@ import java.util.Date;
  */
 
 public class Area {
-    private String AreaID;  //身份标识
+    private String area_id;  //身份标识
     private String AreaKey;  //区域类别   CraneArea（龙门吊）/ TruckArea（集卡）/BoxArea（箱区）/ TrainArea（火车）
     private String AreaSize;  //  W,H 区域大小,实际米数
     private String AreaPos;  // X,Y  区域位置，实际米数
     private String AreaNum;  // 所含元素
     private String color;  //颜色
     private String stroke; //描边
-    private String AreaCategory;  //默认值OfGroups
-    private String AreaIsGroup;  //默认值1（True）
+    private String AreaCategory;  //默认值OfiGroups
+    private String area_isGroup;  //默认值1（True）
     private String AreaScale;  // 展示画面与实际比例，默认0.25
     private Date createTime;  //创建时间
     private String userID;  //修改人
@@ -24,12 +24,20 @@ public class Area {
     private String flag;  //1：区域不可用  0：区域可用
 
 
-    public String getAreaID() {
-        return AreaID;
+    public String getArea_id() {
+        return area_id;
     }
 
-    public void setAreaID(String areaID) {
-        AreaID = areaID;
+    public void setArea_id(String area_id) {
+        this.area_id = area_id;
+    }
+
+    public String getArea_isGroup() {
+        return area_isGroup;
+    }
+
+    public void setArea_isGroup(String area_isGroup) {
+        this.area_isGroup = area_isGroup;
     }
 
     public String getAreaKey() {
@@ -122,13 +130,7 @@ public class Area {
         this.version = version;
     }
 
-    public String getAreaIsGroup() {
-        return AreaIsGroup;
-    }
 
-    public void setAreaIsGroup(String areaIsGroup) {
-        AreaIsGroup = areaIsGroup;
-    }
 
     public String getFlag() {
         return flag;

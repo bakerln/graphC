@@ -1,6 +1,8 @@
 package com.display.controller;
 import com.display.service.DisplayService;
+import com.display.vo.AreaVO;
 import com.display.vo.ContainerVO;
+import com.display.vo.GroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +40,9 @@ public class DisplayController {
     @RequestMapping(value = "/showArea")
     public void initContainerYard(HttpServletResponse response){
         //areaList
-        List<Area> areaList = displayService.getArea();
+        List<AreaVO> areaList = displayService.getArea();
         //groupList
-        List<Group> groupList = displayService.getGroup();
+        List<GroupVO> groupList = displayService.getGroup();
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);
@@ -56,9 +58,9 @@ public class DisplayController {
     @RequestMapping(value = "/show")
     public void show(HttpServletResponse response){
         //areaList
-        List<Area> areaList = displayService.getArea();
+        List<AreaVO> areaList = displayService.getArea();
         //groupList
-        List<Group> groupList = displayService.getGroup();
+        List<GroupVO> groupList = displayService.getGroup();
         //containerList
         List<Container> containerList = displayService.getContainer();
         Map initMap = new HashMap();
