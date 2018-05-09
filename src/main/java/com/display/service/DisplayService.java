@@ -39,7 +39,7 @@ public class DisplayService {
                 areaVO.setID(area.getArea_id());
                 areaVO.setKey(area.getAreaKey());
 
-                areaVO.setGroup(area.getArea_isGroup()=="1"?true:false);
+                areaVO.setIsGroup(area.getArea_isGroup()=="1"?true:false);
                 areaVO.setCategory(area.getAreaCategory());
                 areaVO.setSize(newSize);
                 areaVO.setPos(area.getAreaPos());

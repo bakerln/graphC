@@ -75,11 +75,11 @@ public class AreaVO{
         this.color = color;
     }
 
-    public Boolean getGroup() {
+    public Boolean getIsGroup() {
         return isGroup;
     }
 
-    public void setGroup(Boolean group) {
+    public void setIsGroup(Boolean group) {
         isGroup = group;
     }
 
