@@ -2,8 +2,11 @@ package com.display.dao;
 import com.display.model.Area;
 import com.display.model.Group;
 import com.display.model.Container;
+import com.display.vo.ContainerVO;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,6 +73,16 @@ import com.config.util.page.PageUtil;
             NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
             SqlParameterSource paramSource = new BeanPropertySqlParameterSource(oneVo);
             List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
+            if (list!=null&&list.size()!=0){
+                return list.get("3");
+            }
+            return "error";
             return list;
+        }
+
+        public ContainerVO getContainerByID(List oldContainerList) {
+        }
+
+        public String getNewContainerID(String oldContainerID) {
         }
     }
