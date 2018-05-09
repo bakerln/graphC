@@ -74,13 +74,15 @@ import com.config.util.page.PageUtil;
             SqlParameterSource paramSource = new BeanPropertySqlParameterSource(oneVo);
             List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
             if (list!=null&&list.size()!=0){
-                return list.get("3");
             }
-            return "error";
             return list;
         }
 
-        public ContainerVO getContainerByID(List oldContainerList) {
+        public Container getContainerByID(List oldContainerList) {
+            Object[] params = new Object[] { oldContainerList };
+            String sql = "select * from JX_TX_CONTAINER where ID=?";
+            List<Container> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Container.class));
+            return list.get(0);
         }
 
         public String getNewContainerID(String oldContainerID) {
