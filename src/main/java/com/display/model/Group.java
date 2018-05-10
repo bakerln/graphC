@@ -8,16 +8,15 @@ import java.util.Date;
  */
 
 public class Group {
-    private String groupID;  //容器ID
+    private String group_id;  //容器ID
     private String groupKey;  //组节点名称，唯一标识 G表示箱位，T表示集卡，R表示火车，L表示龙门吊
-    private String groupType;  //G表示箱位，T表示集卡，R表示火车，L表示龙门吊
     private String groupBelong;  //CraneArea：龙门吊   TruckArea：集卡    BoxArea：箱区   TrainArea：火车  组节点所属区域
     private String groupName;  //车号，集卡号
     private String cisPos;  //顺位号
     private String groupSize;  //(H W）容器大小，用实际米数记录
     private String groupPos;  //（H B）区域位置，用行、贝记录
     private String groupCategory;  //默认值OfNodes
-    private String groupIsGroup;  //默认值1 (TRUE)
+    private String group_isGroup;  //默认值1 (TRUE)
     private String groupScale;  // 展示画面与实际比例，默认0.25
     private String groupUrl;  //火车和集卡图片
     private Date createTime;
@@ -26,12 +25,21 @@ public class Group {
     private String flag;
     private String GROUP_PX_POS;
 
-    public String getGroupID() {
-        return groupID;
+
+    public String getGroup_id() {
+        return group_id;
     }
 
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
+    public void setGroup_id(String group_id) {
+        this.group_id = group_id;
+    }
+
+    public String getGroup_isGroup() {
+        return group_isGroup;
+    }
+
+    public void setGroup_isGroup(String group_isGroup) {
+        this.group_isGroup = group_isGroup;
     }
 
     public String getGroupKey() {
@@ -42,13 +50,6 @@ public class Group {
         this.groupKey = groupKey;
     }
 
-    public String getGroupType() {
-        return groupType;
-    }
-
-    public void setGroupType(String groupType) {
-        this.groupType = groupType;
-    }
 
     public String getGroupBelong() {
         return groupBelong;
@@ -138,14 +139,6 @@ public class Group {
 
     public void setVersion(String version) {
         this.version = version;
-    }
-
-    public String getGroupIsGroup() {
-        return groupIsGroup;
-    }
-
-    public void setGroupIsGroup(String groupIsGroup) {
-        this.groupIsGroup = groupIsGroup;
     }
 
     public String getFlag() {

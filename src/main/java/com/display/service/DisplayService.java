@@ -39,7 +39,7 @@ public class DisplayService {
                 areaVO.setID(area.getArea_id());
                 areaVO.setKey(area.getAreaKey());
 
-                areaVO.setIsGroup(area.getArea_isGroup()=="1"?true:false);
+                areaVO.setIsGroup(area.getArea_isGroup().equals("1")?true:false);
                 areaVO.setCategory(area.getAreaCategory());
                 areaVO.setSize(newSize);
                 areaVO.setPos(area.getAreaPos());
@@ -60,22 +60,22 @@ public class DisplayService {
         List<GroupVO> showList = new LinkedList();
         if (0 != groupList.size()) {
             for (Object one : groupList) {   //循环取读到的值
-                Group oneVO = (Group) one;   //将list中的每一个数组封装成一个VO
+                Group group = (Group) one;   //将list中的每一个数组封装成一个VO
                 //转换
-                String newSize = CoordinateUtil.convertM2P(oneVO.getGroupSize());
+                String newSize = CoordinateUtil.convertM2P(group.getGroupSize());
 
                 //展示VO
                 GroupVO groupVO = new GroupVO();   //将所有数据封装到新VO中
-                groupVO.setId(oneVO.getGroupID());
-                groupVO.setKey(oneVO.getGroupKey());
-                groupVO.setIsGroup(oneVO.getGroupIsGroup());
-                groupVO.setGroup(oneVO.getGroupBelong());
-                groupVO.setCategory(oneVO.getGroupCategory());
+                groupVO.setId(group.getGroup_id());
+                groupVO.setKey(group.getGroupKey());
+                groupVO.setIsGroup(group.getGroup_isGroup().equals("1")?true:false);
+                groupVO.setGroup(group.getGroupBelong());
+                groupVO.setCategory(group.getGroupCategory());
                 groupVO.setSize(newSize);
-                groupVO.setPos(oneVO.getGROUP_PX_POS());
-                groupVO.setName(oneVO.getGroupName());
-                groupVO.setCisPos(oneVO.getCisPos());
-                groupVO.setGroupPos(oneVO.getGroupPos());
+                groupVO.setPos(group.getGROUP_PX_POS());
+                groupVO.setName(group.getGroupName());
+                groupVO.setCisPos(group.getCisPos());
+                groupVO.setGroupPos(group.getGroupPos());
 
                 showList.add(groupVO);    //重新生成groupList
             }

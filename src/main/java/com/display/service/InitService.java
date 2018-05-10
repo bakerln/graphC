@@ -64,7 +64,7 @@ public class InitService {
 
             //将数据封装到model
             Group group = new Group();
-            group.setGroupID(createID("G"));
+            group.setGroup_id(createID("G"));
             group.setGroupKey((String) oneVO.get("key"));
             group.setGroupCategory((String) oneVO.get("category"));
             group.setGroupBelong((String) oneVO.get("group"));
@@ -73,7 +73,7 @@ public class InitService {
             group.setGroupSize(newSize);
             group.setGROUP_PX_POS((String) oneVO.get("pos"));
             group.setGroupPos((String) oneVO.get("groupPos"));
-            group.setGroupIsGroup("1");
+            group.setGroup_isGroup("1");
             group.setGroupScale("0.25");
             group.setGroupUrl("");
             group.setVersion(version);

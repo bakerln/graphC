@@ -17,7 +17,7 @@ public class GroupVO{
     private String size;  //车号，集卡号
     private String groupPos;  //（H B）区域位置，用行、贝记录
     private String category;  //默认值OfNodes
-    private String isGroup;  //默认值1 (TRUE)
+    private Boolean isGroup;  //默认值1 (TRUE)
     private String pos;
     private String id;
 
@@ -86,11 +86,11 @@ public class GroupVO{
         this.category = category;
     }
 
-    public String getIsGroup() {
+    public Boolean getIsGroup() {
         return isGroup;
     }
 
-    public void setIsGroup(String isGroup) {
+    public void setIsGroup(Boolean isGroup) {
         this.isGroup = isGroup;
     }
 
