@@ -39,7 +39,7 @@ public class DisplayService {
                 areaVO.setID(area.getArea_id());
                 areaVO.setKey(area.getAreaKey());
 
-                areaVO.setIsGroup(area.getArea_isGroup().equals("1")?true:false);
+                areaVO.setIsGroup("1".equals(area.getArea_isGroup())?true:false);
                 areaVO.setCategory(area.getAreaCategory());
                 areaVO.setSize(newSize);
                 areaVO.setPos(area.getAreaPos());
@@ -68,7 +68,7 @@ public class DisplayService {
                 GroupVO groupVO = new GroupVO();   //将所有数据封装到新VO中
                 groupVO.setId(group.getGroup_id());
                 groupVO.setKey(group.getGroupKey());
-                groupVO.setIsGroup(group.getGroup_isGroup().equals("1")?true:false);
+                groupVO.setIsGroup("1".equals(group.getGroup_isGroup())?true:false);
                 groupVO.setGroup(group.getGroupBelong());
                 groupVO.setCategory(group.getGroupCategory());
                 groupVO.setSize(newSize);

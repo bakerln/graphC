@@ -2,7 +2,6 @@ package com.common.util;
 
 import com.config.util.string.StringUtil;
 
-import java.text.DecimalFormat;
 
 /**
  * Created by LiNan on 2018-05-02.

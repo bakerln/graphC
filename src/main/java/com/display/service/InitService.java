@@ -38,6 +38,7 @@ public class InitService {
             area.setColor((String) oneVO.get("color"));
             area.setStroke((String) oneVO.get("stroke"));
             area.setAreaCategory((String) oneVO.get("category"));
+            area.setArea_isGroup("1");
             area.setAreaScale("0.25");
             area.setVersion(version); //版本号  14位日期
             area.setFlag("0");
