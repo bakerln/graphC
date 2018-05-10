@@ -151,4 +151,16 @@ public class StringUtil {
     public static double getSafeDouble(Object obj, double nDefualt) {
         return obj == null ? 0 : Double.parseDouble(String.valueOf(obj));
     }
+
+    /**
+     * double 取舍一位小数
+     * @param num
+     * @return
+     */
+    public static double getOneDecimal(double num) {
+        DecimalFormat format = new DecimalFormat("#.0");
+        String numString = format.format(num);
+        Double temp= Double.valueOf(numString);
+        return temp;
+    }
 }

@@ -1,5 +1,9 @@
 package com.common.util;
 
+import com.config.util.string.StringUtil;
+
+import java.text.DecimalFormat;
+
 /**
  * Created by LiNan on 2018-05-02.
  * Description:
@@ -32,13 +36,14 @@ public class CoordinateUtil {
         String[] size = oldSize.split(" ");
         String wString = size[0].replace("(","");
         String hString = size[1].replace(")","");
-        double w = Integer.parseInt(wString)/METER2PX + Integer.parseInt(wString)%METER2PX*0.1;
-        double h = Integer.parseInt(hString)/METER2PX + Integer.parseInt(hString)%METER2PX*0.1;
+        double w = StringUtil.getOneDecimal(Double.valueOf(wString)/METER2PX);
+        double h = StringUtil.getOneDecimal(Double.valueOf(hString)/METER2PX);
         return w + " " + h;
     }
 
     public static void main(String[] args) {
-        String a = "(10 60)";
+        String a = "(70 8.4)";
+        String b = convertP2M(a);
         System.out.println(convertM2P(a));
         System.out.println(convertP2M(a));
     }

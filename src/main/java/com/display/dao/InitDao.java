@@ -20,7 +20,7 @@ public class InitDao {
     public int addInitArea(Area area) {
 
         String sql = "INSERT INTO JX_TX_AREA (AREA_ID,AREA_KEY,AREA_SIZE,AREA_POS,AREA_NUM,COLOR,STROKE,AREA_CATEGORY,AREA_ISGROUP,AREA_SCALE,CREATETIME,VERSION,USER_ID,FLAG)" +
-                "VALUES(:AreaID,:AreaKey,:AreaSize,:AreaPos,:AreaNum,:color,:stroke,:AreaCategory,:AreaIsGroup,:AreaScale,sysdate,:version,:userID,:flag)";
+                "VALUES(:area_id,:AreaKey,:AreaSize,:AreaPos,:AreaNum,:color,:stroke,:AreaCategory,:area_isGroup,:AreaScale,sysdate,:version,:userID,:flag)";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(area);
         return namedParameterJdbcTemplate.update(sql, paramSource);
@@ -37,8 +37,8 @@ public class InitDao {
 
     public int addInitGroup(Group group) {
 
-        String sql = "INSERT INTO JX_TX_GROUP (GROUP_ID,GROUP_KEY,GROUP_TYPE,GROUP_BELONG,GROUP_NAME,CISPOS,GROUP_SIZE,GROUP_POS,GROUP_CATEGORY,GROUP_ISGROUP,GROUP_SCALE,GROUP_URL,CREATETIME,VERSION,USER_ID,FLAG,GROUP_PX_POS)" +
-                "VALUES(:groupID,:groupKey,:groupType,:groupBelong,:groupName,:cisPos,:groupSize,:groupPos,:groupCategory,:groupIsGroup,:groupScale,:groupUrl,sysdate,:version,:userID,:flag,:GROUP_PX_POS)";
+        String sql = "INSERT INTO JX_TX_GROUP (GROUP_ID,GROUP_KEY,GROUP_BELONG,GROUP_NAME,CISPOS,GROUP_SIZE,GROUP_POS,GROUP_CATEGORY,GROUP_ISGROUP,GROUP_SCALE,GROUP_URL,CREATETIME,VERSION,USER_ID,FLAG,GROUP_PX_POS)" +
+                "VALUES(:group_id,:groupKey,:groupBelong,:groupName,:cisPos,:groupSize,:groupPos,:groupCategory,:group_isGroup,:groupScale,:groupUrl,sysdate,:version,:userID,:flag,:GROUP_PX_POS)";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(group);
         return namedParameterJdbcTemplate.update(sql, paramSource);
