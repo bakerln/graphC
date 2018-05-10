@@ -1,7 +1,10 @@
 package com.plan.controller;
 
+import com.config.util.web.WebUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by LiNan on 2018-04-27.
@@ -13,8 +16,8 @@ public class PlanController {
 
 
     @RequestMapping(value = "/addPlan")
-    public void addPlan(){
-
+    public void addPlan(HttpServletResponse response, String containerID){
+        WebUtil.out(response,"success");
     }
 
 
