@@ -2,6 +2,7 @@ package com.display.model;
 
 
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by Ren on 2018-05-13.
@@ -27,7 +28,6 @@ public class Container {
     private String arriveTime;  //格式2018-04-27 12:12:12
     private Date updateTime;
     private String userID;
-
 
     public String getContainerID() {
         return containerID;
@@ -117,8 +117,13 @@ public class Container {
         this.containerUrl = containerUrl;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public String getPlanTime() {
         return planTime;
@@ -134,14 +139,6 @@ public class Container {
 
     public void setArriveTime(String arriveTime) {
         this.arriveTime = arriveTime;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 
     public Date getUpdateTime() {

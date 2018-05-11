@@ -90,10 +90,10 @@ public class InitService {
 
     /**
      *
-     * @param flag id属性，Area:A /Group:G/ Container:C
+     * @param flag id属性，Area:A /Group:G/ Container:C /Plan:P
      * @return
      */
-    private String createID(String flag){
+    public String createID(String flag){
         int id = initDao.createID();
         String date = initDao.createDate();
         return flag + date + id;
