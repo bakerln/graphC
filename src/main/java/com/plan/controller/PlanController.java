@@ -26,7 +26,7 @@ public class PlanController {
     @RequestMapping(value = "/addPlan")
     public void addPlan(HttpServletResponse response, String data){
         HashMap dataMap = (HashMap) JsonUtil.toObject(data,HashMap.class);
-        String id = (String) dataMap.get("id");
+        String id = (String) dataMap.get("containerId");
         HashMap container1 = (HashMap) dataMap.get("container");
         HashMap plan1 = (HashMap) dataMap.get("plan");
         planService.addPlan(id,container1,plan1);
@@ -38,7 +38,7 @@ public class PlanController {
     @RequestMapping(value = "updatePlan")
     public void updatePlan(HttpServletResponse response, String data){
         HashMap dataMap = (HashMap) JsonUtil.toObject(data,HashMap.class);
-        String id = (String) dataMap.get("id");
+        String id = (String) dataMap.get("containerId");
         HashMap container1 = (HashMap) dataMap.get("container");
         HashMap plan1 = (HashMap) dataMap.get("plan");
         planService.updatePlan(id,container1,plan1);

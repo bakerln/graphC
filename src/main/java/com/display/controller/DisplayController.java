@@ -73,8 +73,8 @@ public class DisplayController {
 
     //单个集装箱
     @RequestMapping(value = "/planSingle")
-    public void planSingle(HttpServletResponse response,String containerID){
-        ArrayList oldContainerList = (ArrayList) JsonUtil.toObject(containerID,List.class);
+    public void planSingle(HttpServletResponse response,String name){
+        ArrayList oldContainerList = (ArrayList) JsonUtil.toObject(name,List.class);
         String oldContainerID = (String)oldContainerList.get(3);
         String newContainerID = displayService.getNewContainerID(oldContainerID);
         ContainerVO oldContainer = displayService.getContainerByID(oldContainerID);

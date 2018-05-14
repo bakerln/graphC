@@ -55,5 +55,13 @@ import org.springframework.stereotype.Repository;
 
     }
 
+    public int deletePlan(String planID){
+        String sql = "update JX_TX_PLAN set NEW_CONTAINER_ID=''  where PLAN_ID=?";
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
+        SqlParameterSource paramSource = new BeanPropertySqlParameterSource(planID);
+        return namedParameterJdbcTemplate.update(sql, paramSource);
+
+    }
+
 
     }
