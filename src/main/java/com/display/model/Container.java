@@ -19,6 +19,7 @@ public class Container {
     private String containerType;  //箱尺寸：20尺，40尺
     private String layer;  //箱所在层数:1\2\3
     private String containerPos;  //（H B）集装箱位置，用行、贝记录
+    private String group_px_pos;  //集装箱所在容器位置
     private String containerSize;  //（H W）集装箱大小，用实际米数记录
     private String isPlan;  //0实际箱（目前位置）   1计划箱（未搬倒） 2 完结箱（已搬倒完） 3 删除箱（计划删除）
     private String containerScale;  //
@@ -155,5 +156,13 @@ public class Container {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getGroup_px_pos() {
+        return group_px_pos;
+    }
+
+    public void setGroup_px_pos(String group_px_pos) {
+        this.group_px_pos = group_px_pos;
     }
 }

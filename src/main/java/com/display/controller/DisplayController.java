@@ -12,8 +12,6 @@ import com.config.util.web.WebUtil;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-import com.display.model.Area;
-import com.display.model.Group;
 import com.display.model.Container;
 import java.util.ArrayList;
 
@@ -62,7 +60,7 @@ public class DisplayController {
         //groupList
         List<GroupVO> groupList = displayService.getGroup();
         //containerList
-        List<Container> containerList = displayService.getContainer();
+        List<ContainerVO> containerList = displayService.getContainer();
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);

@@ -10,6 +10,7 @@ import com.config.util.string.StringUtil;
 public class CoordinateUtil {
 
     private static final int METER2PX = 6; // 1m = 6px
+    private static final int LAYER_PX = 20;//每层20px
 
     /**
      * meter to px
@@ -40,10 +41,27 @@ public class CoordinateUtil {
         return w + " " + h;
     }
 
+    /**
+     * getContainerPos
+     * @param oldPos
+     * @param layer
+     * @return
+     */
+    public static String getContainerPos(String oldPos,String layer){
+        String[] size = oldPos.split(" ");
+        float y = Float.valueOf(size[1]) + (3 - Integer.valueOf(layer))*LAYER_PX;
+        String x = size[0];
+
+        return x + " " + y;
+
+    }
+
     public static void main(String[] args) {
-        String a = "(70 8.4)";
-        String b = convertP2M(a);
-        System.out.println(convertM2P(a));
-        System.out.println(convertP2M(a));
+        String a = "-600 -380";
+//        String b = convertP2M(a);
+        String b = getContainerPos(a,"1");
+        System.out.println(b);
+//        System.out.println(convertM2P(a));
+//        System.out.println(convertP2M(a));
     }
 }

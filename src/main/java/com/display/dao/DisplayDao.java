@@ -37,7 +37,7 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
         }
 
         public List<Container> getContainer() {
-            String sql = "select * from JX_TX_CONTAINER ";
+            String sql = "select * from JX_TX_CONTAINER where ISPLAN = '0'";
             NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
             List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
             return list;
