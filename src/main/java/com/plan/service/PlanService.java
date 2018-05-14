@@ -59,11 +59,11 @@ public class PlanService {
         plan.setNewContainerID(newContainerID);
         plan.setEquipment((String) plan1.get(""));
         plan.setPlanDateEnd((String) plan1.get("planDate"));
-        plan.setPlanDateBegin((String) plan1.get(""));
+        plan.setPlanDateBegin("");
         plan.setCreateUserID("11");
         plan.setAuditorID("22");
         plan.setPlanFrom((String) plan1.get("planFrom"));
-        plan.setFlag((String) plan1.get(""));
+        plan.setFlag("ZN02");
         plan.setHeavyFlag((String) plan1.get(""));
         planDao.addPlan(plan);
     }
@@ -99,20 +99,19 @@ public class PlanService {
             planDao.addContainer(container);
 
 
-            //封装Plan到model
             Plan plan = new Plan();
-            plan.setPlanID((String) plan1.get(""));
-            plan.setPlanType((String) plan1.get(""));
+            plan.setPlanID( initService.createID("P"));
+            plan.setPlanType((String) plan1.get("planType"));
             plan.setOldContainerID(oleContainerID);
             plan.setNewContainerID(newContainerID);
             plan.setEquipment((String) plan1.get(""));
-            plan.setPlanDateEnd((String) plan1.get(""));
-            plan.setPlanDateBegin((String) plan1.get(""));
+            plan.setPlanDateEnd((String) plan1.get("planDate"));
+            plan.setPlanDateBegin("");
             plan.setCreateUserID("11");
             plan.setAuditorID("22");
-            plan.setPlanFrom((String) plan1.get(""));
-            plan.setFlag((String) plan1.get(""));
-            plan.setHeavyFlag((String) plan1.get(""));
+            plan.setPlanFrom((String) plan1.get("planFrom"));
+            plan.setFlag("ZN02");
+            plan.setHeavyFlag("");
             planDao.updatePlan(plan);
           } else planDao.deletePlan(planID);
     }

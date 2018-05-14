@@ -33,7 +33,7 @@ import org.springframework.stereotype.Repository;
     public int addPlan(Plan plan) {
 
         String sql = "INSERT INTO JX_TX_PLAN (PLAN_ID,PLAN_TYPE,OLD_CONTAINER_ID,NEW_CONTAINER_ID,EQUIPMENT,PLAN_DATE_END,PLAN_DATE_BEGIN,CREATE_USER_ID,AUDITOR_ID,OPERATOR_ID,PLAN_FROM,FLAG,HEAVY_FLAG)" +
-                "VALUES(planID,:planType,:oldContainerID,:newContainerID,:equipment,:planDateEnd,:planDateBegin,:createUserID,:auditorID,:operatorID,:planFrom,:flag,:heavyFlag)";
+                "VALUES(planID,:planType,:oldContainerID,:newContainerID,:equipment,:planDateEnd,sysdate,:createUserID,:auditorID,:operatorID,:planFrom,:flag,:heavyFlag)";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(plan);
         return namedParameterJdbcTemplate.update(sql, paramSource);
@@ -48,7 +48,7 @@ import org.springframework.stereotype.Repository;
     }
 
     public int updatePlan(Plan plan){
-        String sql = "update JX_TX_PLAN set PLAN_TYPE=:planType,OLD_CONTAINER_ID=:oldContainerID,NEW_CONTAINER_ID=:newContainerID,EQUIPMENT=:equipment,PLAN_DATE_END=:planDateEnd,PLAN_DATE_BEGIN=:planDateBegin,CREATE_USER_ID=:createUserID,AUDITOR_ID=:auditorID,OPERATOR_ID=:operatorID,PLAN_FROM=:planFrom,FLAG=:flag,HEAVY_FLAG=:heavyFlag where PLAN_ID=:planID";
+        String sql = "update JX_TX_PLAN set PLAN_TYPE=:planType,OLD_CONTAINER_ID=:oldContainerID,NEW_CONTAINER_ID=:newContainerID,EQUIPMENT=:equipment,PLAN_DATE_END=:planDateEnd,PLAN_DATE_BEGIN=:sysdate,CREATE_USER_ID=:createUserID,AUDITOR_ID=:auditorID,OPERATOR_ID=:operatorID,PLAN_FROM=:planFrom,FLAG=:flag,HEAVY_FLAG=:heavyFlag where PLAN_ID=:planID";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(plan);
         return namedParameterJdbcTemplate.update(sql, paramSource);
@@ -56,7 +56,7 @@ import org.springframework.stereotype.Repository;
     }
 
     public int deletePlan(String planID){
-        String sql = "update JX_TX_PLAN set NEW_CONTAINER_ID=''  where PLAN_ID=?";
+        String sql = "update JX_TX_PLAN set NEW_CONTAINER_ID='',FLAG=ZN01  where PLAN_ID=?";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(planID);
         return namedParameterJdbcTemplate.update(sql, paramSource);
