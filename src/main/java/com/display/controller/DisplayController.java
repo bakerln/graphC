@@ -12,7 +12,6 @@ import com.config.util.web.WebUtil;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-import com.display.model.Container;
 import java.util.ArrayList;
 
 /**
@@ -38,9 +37,9 @@ public class DisplayController {
     @RequestMapping(value = "/showArea")
     public void initContainerYard(HttpServletResponse response){
         //areaList
-        List<AreaVO> areaList = displayService.getArea();
+        List<AreaVO> areaList = displayService.getAreaList();
         //groupList
-        List<GroupVO> groupList = displayService.getGroup();
+        List<GroupVO> groupList = displayService.getGroupList();
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);
@@ -56,11 +55,11 @@ public class DisplayController {
     @RequestMapping(value = "/show")
     public void show(HttpServletResponse response){
         //areaList
-        List<AreaVO> areaList = displayService.getArea();
+        List<AreaVO> areaList = displayService.getAreaList();
         //groupList
-        List<GroupVO> groupList = displayService.getGroup();
+        List<GroupVO> groupList = displayService.getGroupList();
         //containerList
-        List<ContainerVO> containerList = displayService.getContainer();
+        List<ContainerVO> containerList = displayService.getContainerList();
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);
@@ -69,33 +68,35 @@ public class DisplayController {
         WebUtil.out(response, JsonUtil.toStr(initMap));
     }
 
-    //单个集装箱
+    //单个集装箱计划
     @RequestMapping(value = "/planSingle")
-    public void planSingle(HttpServletResponse response,String name){
-        ArrayList oldContainerList = (ArrayList) JsonUtil.toObject(name,List.class);
-        String oldContainerID = (String)oldContainerList.get(3);
-        String newContainerID = displayService.getNewContainerID(oldContainerID);
-        ContainerVO oldContainer = displayService.getContainerByID(oldContainerID);
-        ContainerVO newContainer = displayService.getContainerByID(newContainerID);
+    public void planSingle(HttpServletResponse response,String oldContainerName){
+
+        //via Plan
+        String newContainerID = displayService.getPlanContainerID(oldContainerName);
+
+        ContainerVO oldContainer = displayService.getContainer(oldContainerName,"2");
+        ContainerVO newContainer = displayService.getContainer(newContainerID,"1");
+
         //areaList
-        List<AreaVO> areaList = displayService.getArea();
+        List<AreaVO> areaList = displayService.getAreaList();
         //groupList
-        List<GroupVO> groupList = displayService.getGroup();
+        List<GroupVO> groupList = displayService.getGroupList();
 
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);
-        initMap.put("oldContainerList",oldContainer);
-        initMap.put("newContainerList",newContainer);
+        initMap.put("oldContainer",oldContainer);
+        initMap.put("newContainer",newContainer);
 
         WebUtil.out(response, JsonUtil.toStr(initMap));
     }
 
-    //一个区域数据
+
+    //区域计划
     @RequestMapping(value = "planArea")
     public void planArea(HttpServletResponse response,String areaKey){
         //TODO get containerList via JX_TX_GROUP (group_belong = area key)
-        ArrayList areaPlanList = (ArrayList) JsonUtil.toObject(areaKey,List.class);
         //TODO 通过areaKey查询现有箱子的idList
         List containerIDList = displayService.getContainerIDList(areaKey);
         //TODO 通过现有箱子的idList查询newIDList
@@ -106,9 +107,9 @@ public class DisplayController {
 
 
         //areaList
-        List<AreaVO> areaList = displayService.getArea();
+        List<AreaVO> areaList = displayService.getAreaList();
         //groupList
-        List<GroupVO> groupList = displayService.getGroup();
+        List<GroupVO> groupList = displayService.getGroupList();
 
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);

@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class Container {
 
-    private String containerID; //集装箱唯一ID
+    private String container_id; //集装箱唯一ID
     private String containerKey; //元素节点名称B1,B2
     private String containerGroup;  //箱所在组位置: G1,T1,R1
     private String containerName;  //箱号
@@ -30,12 +30,12 @@ public class Container {
     private Date updateTime;
     private String userID;
 
-    public String getContainerID() {
-        return containerID;
+    public String getContainer_id() {
+        return container_id;
     }
 
-    public void setContainerID(String containerID) {
-        this.containerID = containerID;
+    public void setContainer_id(String container_id) {
+        this.container_id = container_id;
     }
 
     public String getContainerKey() {

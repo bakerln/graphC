@@ -29,7 +29,7 @@ public class InitContainerController {
     @RequestMapping(value = "/initContainer")
     public void initContainer(HttpServletResponse response){
         //groupList
-        List<GroupVO> groupList = displayService.getGroup();
+        List<GroupVO> groupList = displayService.getGroupList();
         //add Container
 
 

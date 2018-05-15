@@ -1,8 +1,8 @@
 package com.display.service;
 
 import java.util.*;
-
 import com.common.util.CoordinateUtil;
+import com.config.util.global.GlobalConst;
 import com.display.dao.DisplayDao;
 import com.display.model.*;
 import com.display.vo.AreaVO;
@@ -19,12 +19,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DisplayService {
+
     @Autowired
     private DisplayDao displayDao;
 
-
-    //图形展示
-    public List<AreaVO> getArea() {
+    /**
+     * 获得区域列表
+     * @return
+     */
+    public List<AreaVO> getAreaList() {
         //得到可用的AreaList(flag==0)
         List<Area> areaList = displayDao.getArea();
         List<AreaVO> showList = new LinkedList();
@@ -54,7 +57,11 @@ public class DisplayService {
             return null;
     }
 
-    public List<GroupVO> getGroup() {
+    /**
+     * 获得容器列表
+     * @return
+     */
+    public List<GroupVO> getGroupList() {
         //得到可用的GroupList(flag==0)
         List<Group> groupList = displayDao.getGroup();
         List<GroupVO> showList = new LinkedList();
@@ -84,18 +91,22 @@ public class DisplayService {
             return null;
     }
 
-    public List<ContainerVO> getContainer() {
+    /**
+     *  获得集装箱列表
+     * @return
+     */
+    public List<ContainerVO> getContainerList() {
         //得到当前位置的箱子ContainerList (ISPLAN=0)
         List<Container> containerList = displayDao.getContainer();
         List<ContainerVO> showList = new LinkedList();
         for (Container one:containerList) {
-            String url = "http://localhost:8001" + one.getContainerUrl();
+            String url =  GlobalConst.PIC_URL + one.getContainerUrl();
             //转换
             String newPos = CoordinateUtil.getContainerPos(one.getGroup_px_pos(),one.getLayer());
 
             //展示VO
             ContainerVO containerVO = new ContainerVO();
-            containerVO.setContainerID(one.getContainerID());
+            containerVO.setContainerID(one.getContainer_id());
             containerVO.setGroup(one.getContainerGroup());
             containerVO.setName(one.getContainerName());
             containerVO.setKey(one.getContainerKey());
@@ -105,36 +116,51 @@ public class DisplayService {
             containerVO.setSize(one.getContainerSize());
             containerVO.setPos(newPos);
             containerVO.setUrl(url);
+
             showList.add(containerVO);
         }
         return showList;
     }
 
+    /**
+     * 获得单个集装箱
+     * @param param 参数
+     * @param type  类型 "id":1 、"name":2
+     * @return
+     */
+    public ContainerVO getContainer(String param,String type){
+        Container container;
+        if ("2".equals(type)){
+            //通过isplan = 0 定位具体箱子
+            container = displayDao.getContainerByName(param);
+        }else if ("1".equals(type)){
+            container = displayDao.getContainerByID(param);
+        }else return null;
+        //转换
+        String newPos = CoordinateUtil.getContainerPos(container.getGroup_px_pos(),container.getLayer());
+        String url = GlobalConst.PIC_URL + container.getContainerUrl();
 
-    public ContainerVO getContainerByID(String containerID) {
-        //TODO get Container by id
-        Container container = displayDao.getContainerByID(containerID);
-        //转换MODEL 2 VO
-        ContainerVO containerVO = new ContainerVO();   //将所有数据封装到新VO中
-        String size = container.getContainerSize();  //进行尺寸的米to坐标的转换
-        String newSize = CoordinateUtil.convertM2P(size);
-        containerVO.setContainerID(container.getContainerID());
+        //展示VO
+        ContainerVO containerVO = new ContainerVO();
+        containerVO.setContainerID(container.getContainer_id());
         containerVO.setKey(container.getContainerKey());
         containerVO.setGroup(container.getContainerGroup());
         containerVO.setName(container.getContainerName());
         containerVO.setType(container.getContainerType());
         containerVO.setLayer(container.getLayer());
-        containerVO.setPos(container.getContainerPos());
-        containerVO.setSize(newSize);
+        containerVO.setPos(newPos);
+        containerVO.setSize(container.getContainerSize());
         containerVO.setIsPlan(container.getIsPlan());
-        containerVO.setUrl(container.getContainerUrl());
+        containerVO.setUrl(url);
 
-        //TODO return Container
         return containerVO;
     }
 
-    public String getNewContainerID(String oldContainerID) {
-        return displayDao.getNewContainerID(oldContainerID);
+
+
+    public String getPlanContainerID(String oldContainerName) {
+        Container container = displayDao.getContainerByName(oldContainerName);
+        return displayDao.getPlanContainerID(container.getContainer_id());
     }
 
 
@@ -152,7 +178,7 @@ public class DisplayService {
 
         for (int i = 0;i < containerIDList.size(); i ++) {
             String oldContainerID = String.valueOf(containerIDList.get(0));
-            String newContainerID = getNewContainerID(oldContainerID);
+            String newContainerID = getPlanContainerID(oldContainerID);
             containerNewIDList.add(newContainerID);
         }
 
@@ -170,7 +196,7 @@ public class DisplayService {
             // get id
             String containerID = String.valueOf(containerIDList.get(0));
             // use id get Container
-            ContainerVO containerVO = getContainerByID(containerID);
+            ContainerVO containerVO = getContainer(containerID,"1");
 
             containerList.add(containerVO);
         }

@@ -4,15 +4,10 @@ import com.display.model.Group;
 import com.display.model.Container;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
-
-import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 
 
@@ -42,37 +37,24 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
             List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
             return list;
         }
-
-//        public List<Container> getOldContainerList(HashMap oneVo) {
-//            String sql = "select * from JX_TX_CONTAINER where CONTAINER_ID:=oldContainerID ";
-//            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
-//            SqlParameterSource paramSource = new BeanPropertySqlParameterSource(oneVo);
-//            List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
-//            return list;
-//        }
-//
-//        public List<Container> getNewContainerList(HashMap oneVo) {
-//            String sql = "select JX_TX_CONTAINER.* from JX_TX_CONTAINER where JX_TX_CONTAINER.CONTAINER_ID=(select max(JX_TX_PLAN.NEW_CONTAINER_ID) from JX_TX_PLAN where JX_TX_PLAN.OLD_CONTAINER_ID:=oldContainerID) ";
-//            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
-//            SqlParameterSource paramSource = new BeanPropertySqlParameterSource(oneVo);
-//            List<Container> list = namedParameterJdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Container.class));
-//            if (list!=null&&list.size()!=0){
-//            }
-//            return list;
-//        }
-
+        public Container getContainerByName(String param) {
+            Object[] params = new Object[] { param };
+            String sql = "select * from JX_TX_CONTAINER where ISPLAN = '0' AND CONTAINER_NAME = ?";
+            List<Container> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Container.class));
+            //
+            return list.get(0);
+        }
         public Container getContainerByID(String containerID) {
             Object[] params = new Object[] { containerID };
-            String sql = "select * from JX_TX_CONTAINER where ID=?";
+            String sql = "select * from JX_TX_CONTAINER where CONTAINER_ID = ?";
             List<Container> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Container.class));
             return list.get(0);
         }
 
-        public String getNewContainerID(String oldContainerID) {
+        public String getPlanContainerID(String oldContainerID) {
             Object[] params = new Object[] { oldContainerID };
-            String sql = "select NEW_CONTAINER_ID from JX_TX_PLAN where ID=?";
-            List<Container> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Container.class));
-            return String.valueOf(list.get(0));
+            String sql = "select NEW_CONTAINER_ID from JX_TX_PLAN where OLD_CONTAINER_ID = ?";
+            return jdbcTemplate.queryForObject(sql,params,String.class);
 
         }
 
@@ -86,4 +68,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
             return list;
 
         }
+
+
     }

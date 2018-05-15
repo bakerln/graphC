@@ -35,7 +35,7 @@ public class PlanService {
 
         //封装Container到model
         Container container = new Container();
-        container.setContainerID(newContainerID);
+        container.setContainer_id(newContainerID);
         container.setContainerKey((String) container1.get("key"));
         container.setContainerGroup((String) container1.get("group"));
         container.setContainerName((String) container1.get("name"));
@@ -82,7 +82,7 @@ public class PlanService {
 
             //封装Container到model
             Container container = new Container();
-            container.setContainerID(newContainerID);
+            container.setContainer_id(newContainerID);
             container.setContainerKey((String) container1.get("key"));
             container.setContainerGroup((String) container1.get("group"));
             container.setContainerName((String) container1.get("name"));
