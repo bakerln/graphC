@@ -4,6 +4,9 @@ import com.display.model.Group;
 import com.display.model.Container;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -54,17 +57,20 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
         public String getPlanContainerID(String oldContainerID) {
             Object[] params = new Object[] { oldContainerID };
             String sql = "select NEW_CONTAINER_ID from JX_TX_PLAN where OLD_CONTAINER_ID = ?";
-            return jdbcTemplate.queryForObject(sql,params,String.class);
-
+            List list = jdbcTemplate.queryForList(sql,params);
+            if(list.size()==0){
+                return "";
+            }else{
+                HashMap map = (HashMap)list.get(0);
+                return  (String) map.get("NEW_CONTAINER_ID");
+            }
         }
 
-        public List<Container> getContainerIDList(String areaKey) {
-            Object[] params = new Object[] { areaKey };
-            String sql = "select CONTAINER_ID from JX_TX_CONTAINER c where c.CONTAINER_GROUP\n" +
+        public List getContainerIDList(String group_belong) {
+            Object[] params = new Object[] { group_belong };
+            String sql = "select CONTAINER_ID from JX_TX_CONTAINER c where ISPLAN = '0' AND c.CONTAINER_GROUP " +
                     "in (select GROUP_KEY from JX_TX_GROUP g where g.GROUP_BELONG=?)";
-            NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
-            // SqlParameterSource paramSource = new BeanPropertySqlParameterSource(areaVO);
-            List<Container> list = namedParameterJdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Container.class));
+            List list = jdbcTemplate.queryForList(sql,params);
             return list;
 
         }

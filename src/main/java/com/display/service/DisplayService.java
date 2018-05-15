@@ -157,32 +157,45 @@ public class DisplayService {
     }
 
 
-
-    public String getPlanContainerID(String oldContainerName) {
+    /**
+     * 通过Plan获得计划箱ID
+     * @param oldContainerName
+     * @return
+     */
+    public String getPlanContainerIDbyName(String oldContainerName) {
         Container container = displayDao.getContainerByName(oldContainerName);
         return displayDao.getPlanContainerID(container.getContainer_id());
     }
 
-
-    //通过areaKey查找所有符合的containeID
+    /**
+     * 通过areaKey查找所有符合的containeID
+     * @param areaKey
+     * @return
+     */
     public List getContainerIDList(String areaKey) {
         List ContainerIDList = displayDao.getContainerIDList(areaKey);
         return ContainerIDList;
     }
 
 
-    //通过旧ID查找newID
+    /**
+     * 通过currentID查找PlanID
+     * @param containerIDList
+     * @return
+     */
     public List getPlanContainerList(List containerIDList) {
         //TODO 通过循环containerIDList取其中的id  并通过getNewID来获取新ID
         List containerNewIDList = new LinkedList();
-
-        for (int i = 0;i < containerIDList.size(); i ++) {
-            String oldContainerID = String.valueOf(containerIDList.get(0));
-            String newContainerID = getPlanContainerID(oldContainerID);
-            containerNewIDList.add(newContainerID);
+        for (Object one:containerIDList) {
+            HashMap map = new HashMap<>();
+            HashMap containerID = (HashMap)one;
+            String containerPlanID = displayDao.getPlanContainerID((String)containerID.get("container_id"));
+            if ("".equals(containerPlanID)){
+                continue;
+            }
+            map.put("CONTAINER_ID",containerPlanID);
+            containerNewIDList.add(map);
         }
-
-        //  List<Container> containerNewIDList = (List<Container>) displayDao.getNewContainerID(containerIDList);
         return containerNewIDList;
     }
 
@@ -192,14 +205,13 @@ public class DisplayService {
         //TODO 通过固定方法循环取list中的id值去查询箱子信息
         List<ContainerVO> containerList = new LinkedList<ContainerVO>();
 
-        for (int i = 0;i < containerIDList.size(); i ++) {
-            // get id
-            String containerID = String.valueOf(containerIDList.get(0));
-            // use id get Container
+        for (Object one:containerIDList) {
+            HashMap map = (HashMap) one;
+            String containerID = (String) map.get("CONTAINER_ID");
             ContainerVO containerVO = getContainer(containerID,"1");
-
             containerList.add(containerVO);
         }
+
         return containerList;
     }
 
