@@ -12,7 +12,6 @@ import com.config.util.web.WebUtil;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 
 /**
  * Created by LiNan on 2018-04-25.
@@ -73,7 +72,7 @@ public class DisplayController {
     public void planSingle(HttpServletResponse response,String oldContainerName){
 
         //via Plan
-        String newContainerID = displayService.getPlanContainerID(oldContainerName);
+        String newContainerID = displayService.getPlanContainerIDbyName(oldContainerName);
 
         ContainerVO oldContainer = displayService.getContainer(oldContainerName,"2");
         ContainerVO newContainer = displayService.getContainer(newContainerID,"1");
@@ -96,14 +95,13 @@ public class DisplayController {
     //区域计划
     @RequestMapping(value = "planArea")
     public void planArea(HttpServletResponse response,String areaKey){
-        //TODO get containerList via JX_TX_GROUP (group_belong = area key)
-        //TODO 通过areaKey查询现有箱子的idList
+        //查找该区域的ContainerID(group_belong = area key)
         List containerIDList = displayService.getContainerIDList(areaKey);
-        //TODO 通过现有箱子的idList查询newIDList
-        List containerNewIDList = displayService.getPlanContainerList(containerIDList);
+        //查找该区域的PlanContainerID
+        List containerPlanIDList = displayService.getPlanContainerList(containerIDList);
         //TODO 通过固定方法去查询箱子信息
         List<ContainerVO> containerList = displayService.ContainerList(containerIDList);
-        List<ContainerVO> newContainerList = displayService.ContainerList(containerNewIDList);
+        List<ContainerVO> newContainerList = displayService.ContainerList(containerPlanIDList);
 
 
         //areaList
