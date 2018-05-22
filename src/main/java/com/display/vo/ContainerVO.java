@@ -1,6 +1,5 @@
 package com.display.vo;
 
-import java.util.Date;
 
 /**
  * Created by LiNan on 2018-04-26.
@@ -12,7 +11,7 @@ public class ContainerVO {
     private String group;  //箱所在组位置: G1,T1,R1
     private String name;  //箱号
     private String type;  //箱尺寸：20尺，40尺
-    private String layer;  //箱所在层数:1\2\3
+    private int layer;  //箱所在层数:1\2\3
     private String pos;  //（H B）集装箱位置，用行、贝记录
     private String size;  //（H W）集装箱大小，用实际米数记录
     private String isPlan;  //1计划箱   0实际箱
@@ -58,11 +57,11 @@ public class ContainerVO {
         this.type = type;
     }
 
-    public String getLayer() {
+    public int getLayer() {
         return layer;
     }
 
-    public void setLayer(String layer) {
+    public void setLayer(int layer) {
         this.layer = layer;
     }
 

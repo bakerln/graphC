@@ -60,6 +60,7 @@ public class InitService {
         for (Object one : groupList) {//循环从list中取数
             HashMap oneVO = (HashMap) one;  //将每次循环出来的数据封装成一个 oneVO
             //转换  px to 米   1尺==2px，1米==3尺==6px
+            //TODO 目前用实际m数保持group大小
             String newSize = CoordinateUtil.convertP2M((String)oneVO.get("size")) ;
 
             //将数据封装到model
@@ -98,4 +99,5 @@ public class InitService {
         String date = initDao.createDate();
         return flag + date + id;
     }
+
 }

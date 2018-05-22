@@ -48,6 +48,8 @@ public class InitController {
 
         initService.addInitGroup(group,version);
 
+        //TODO 清空Container表字段（isplan = 3）
+
         WebUtil.out(response, JsonUtil.createOperaStr(true,"init success"));
     }
 

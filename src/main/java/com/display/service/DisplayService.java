@@ -67,18 +67,21 @@ public class DisplayService {
         List<GroupVO> showList = new LinkedList();
         if (0 != groupList.size()) {
             for (Object one : groupList) {   //循环取读到的值
-                Group group = (Group) one;   //将list中的每一个数组封装成一个VO
-                //转换
-                String newSize = CoordinateUtil.convertM2P(group.getGroupSize());
-
+                Group group = (Group) one;
                 //展示VO
-                GroupVO groupVO = new GroupVO();   //将所有数据封装到新VO中
+                GroupVO groupVO = new GroupVO();
+                //箱区单位转换
+                if("OfNodes".equals(group.getGroupCategory())){
+                    String newSize = CoordinateUtil.convertM2P(group.getGroupSize());
+                    groupVO.setSize(newSize);
+                }else{
+                    groupVO.setSize(group.getGroupSize());
+                }
                 groupVO.setId(group.getGroup_id());
                 groupVO.setKey(group.getGroupKey());
                 groupVO.setIsGroup("1".equals(group.getGroup_isGroup())?true:false);
                 groupVO.setGroup(group.getGroupBelong());
                 groupVO.setCategory(group.getGroupCategory());
-                groupVO.setSize(newSize);
                 groupVO.setPos(group.getGROUP_PX_POS());
                 groupVO.setName(group.getGroupName());
                 groupVO.setCisPos(group.getCisPos());
@@ -112,7 +115,7 @@ public class DisplayService {
             containerVO.setKey(one.getContainerKey());
             containerVO.setType(one.getContainerType());
             containerVO.setIsPlan(one.getIsPlan());
-            containerVO.setLayer(one.getLayer());
+            containerVO.setLayer(Integer.valueOf(one.getLayer()));
             containerVO.setSize(one.getContainerSize());
             containerVO.setPos(newPos);
             containerVO.setUrl(url);
@@ -147,7 +150,7 @@ public class DisplayService {
         containerVO.setGroup(container.getContainerGroup());
         containerVO.setName(container.getContainerName());
         containerVO.setType(container.getContainerType());
-        containerVO.setLayer(container.getLayer());
+        containerVO.setLayer(Integer.valueOf(container.getLayer()));
         containerVO.setPos(newPos);
         containerVO.setSize(container.getContainerSize());
         containerVO.setIsPlan(container.getIsPlan());
@@ -214,6 +217,7 @@ public class DisplayService {
 
         return containerList;
     }
+
 
 
 }

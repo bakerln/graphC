@@ -1,7 +1,6 @@
 package com.display.model;
 
 
-import java.util.HashMap;
 
 /**
  * Created by Ren on 2018-05-09.
@@ -9,10 +8,10 @@ import java.util.HashMap;
  */
 public class Plan {
 
-    private String planID;  //计划ID   区域唯一ID（ZT、XT、ZJ、XJ）+（V）
+    private String plan_id;  //计划ID   区域唯一ID（ZT、XT、ZJ、XJ）+（V）
     private String planType;  //计划类别   ZM01:装火车、ZM03:卸火车、ZM05:装集卡、ZM07:卸集卡、ZM09:站内搬移
-    private String oldContainerID;  //原集装箱ID 每个箱子都有一个计划。生成箱子的时候就生成计划
-    private String newContainerID;  //计划集装箱ID
+    private String old_container_id;  //原集装箱ID 每个箱子都有一个计划。生成箱子的时候就生成计划
+    private String new_container_id;  //计划集装箱ID
     private String equipment;  //设备编码
     private String planDateEnd;  //计划要求时间   前台输入
     private String planDateBegin;  //计划起始时间   后台生成
@@ -24,12 +23,12 @@ public class Plan {
     private String flag;  //装卸状态    ZN01:未分配任务、ZN02:已分配任务、ZN03:已完成、ZN04:失败、
     private String heavyFlag;  //空重标识    ZB01: 空、ZB03:重
 
-    public String getPlanID() {
-        return planID;
+    public String getPlan_id() {
+        return plan_id;
     }
 
-    public void setPlanID(String planID) {
-        this.planID = planID;
+    public void setPlan_id(String plan_id) {
+        this.plan_id = plan_id;
     }
 
     public String getPlanType() {
@@ -40,20 +39,20 @@ public class Plan {
         this.planType = planType;
     }
 
-    public String getOldContainerID() {
-        return oldContainerID;
+    public String getOld_container_id() {
+        return old_container_id;
     }
 
-    public void setOldContainerID(String oldContainerID) {
-        this.oldContainerID = oldContainerID;
+    public void setOld_container_id(String old_container_id) {
+        this.old_container_id = old_container_id;
     }
 
-    public String getNewContainerID() {
-        return newContainerID;
+    public String getNew_container_id() {
+        return new_container_id;
     }
 
-    public void setNewContainerID(String newContainerID) {
-        this.newContainerID = newContainerID;
+    public void setNew_container_id(String new_container_id) {
+        this.new_container_id = new_container_id;
     }
 
     public String getEquipment() {

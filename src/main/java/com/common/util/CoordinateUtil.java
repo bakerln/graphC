@@ -9,7 +9,7 @@ import com.config.util.string.StringUtil;
  */
 public class CoordinateUtil {
 
-    private static final int METER2PX = 6; // 1m = 6px
+    private static final int METER2PX = 6; // 1m = 6px = 3尺
     private static final int LAYER_PX = 20;//每层20px
 
     /**
@@ -48,6 +48,9 @@ public class CoordinateUtil {
      * @return
      */
     public static String getContainerPos(String oldPos,String layer){
+        if ("0".equals(layer)){
+            return oldPos;
+        }
         String[] size = oldPos.split(" ");
         float y = Float.valueOf(size[1]) + (3 - Integer.valueOf(layer))*LAYER_PX;
         String x = size[0];

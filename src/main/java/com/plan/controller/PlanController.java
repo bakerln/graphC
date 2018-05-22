@@ -21,30 +21,24 @@ public class PlanController {
     @Autowired
     PlanService planService;
 
-
-
     @RequestMapping(value = "/addPlan")
-    public void addPlan(HttpServletResponse response, String data){
-        HashMap dataMap = (HashMap) JsonUtil.toObject(data,HashMap.class);
-        String id = (String) dataMap.get("containerId");
-        HashMap container1 = (HashMap) dataMap.get("container");
-        HashMap plan1 = (HashMap) dataMap.get("plan");
-        planService.addPlan(id,container1,plan1);
+    public void addPlan(HttpServletResponse response, String plan,String containerId,String planContainer){
+        HashMap planContainerMap = (HashMap) JsonUtil.toObject(planContainer,HashMap.class);
+        HashMap planMap = (HashMap) JsonUtil.toObject(plan,HashMap.class);
+
+        planService.addPlan(containerId,planContainerMap,planMap);
 
         WebUtil.out(response,"success");
     }
 
-
     @RequestMapping(value = "updatePlan")
-    public void updatePlan(HttpServletResponse response, String data){
-        HashMap dataMap = (HashMap) JsonUtil.toObject(data,HashMap.class);
-        String id = (String) dataMap.get("containerId");
-        HashMap container1 = (HashMap) dataMap.get("container");
-        HashMap plan1 = (HashMap) dataMap.get("plan");
-        planService.updatePlan(id,container1,plan1);
+    public void updatePlan(HttpServletResponse response, String plan,String containerId,String planContainer){
+        HashMap planContainerMap = (HashMap) JsonUtil.toObject(planContainer,HashMap.class);
+        HashMap planMap = (HashMap) JsonUtil.toObject(plan,HashMap.class);
+
+        planService.updatePlan(containerId,planContainerMap,planMap);
 
         WebUtil.out(response,"success");
-
     }
 
     @RequestMapping(value = "completePlan")
