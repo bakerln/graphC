@@ -1,5 +1,6 @@
 package com.plan.controller;
 
+import com.config.interceptor.ResultMsg;
 import com.config.util.json.JsonUtil;
 import com.config.util.web.WebUtil;
 import com.plan.service.PlanService;
@@ -26,12 +27,12 @@ public class PlanController {
         HashMap planContainerMap = (HashMap) JsonUtil.toObject(planContainer,HashMap.class);
         HashMap planMap = (HashMap) JsonUtil.toObject(plan,HashMap.class);
 
-        planService.addPlan(containerId,planContainerMap,planMap);
+        ResultMsg resultMsg = planService.addPlan(containerId,planContainerMap,planMap);
 
-        WebUtil.out(response, JsonUtil.createOperaStr(true,"success"));
+        WebUtil.out(response, JsonUtil.toStr(resultMsg));
     }
 
-    @RequestMapping(value = "updatePlan")
+    @RequestMapping(value = "/updatePlan")
     public void updatePlan(HttpServletResponse response, String plan,String containerId,String planContainer){
         HashMap planContainerMap = (HashMap) JsonUtil.toObject(planContainer,HashMap.class);
         HashMap planMap = (HashMap) JsonUtil.toObject(plan,HashMap.class);
@@ -41,11 +42,12 @@ public class PlanController {
         WebUtil.out(response, JsonUtil.createOperaStr(true,"success"));
     }
 
-    @RequestMapping(value = "delete")
+    @RequestMapping(value = "/deletePlan")
     public void deletePlan(HttpServletResponse response,String containerId){
         //计划箱id
         planService.deletePlan(containerId);
 
+        WebUtil.out(response, JsonUtil.createOperaStr(true,"success"));
 
     }
     @RequestMapping(value = "completePlan")

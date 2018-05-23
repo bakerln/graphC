@@ -1,5 +1,6 @@
 package com.plan.service;
 import com.common.util.CoordinateUtil;
+import com.config.interceptor.ResultMsg;
 import com.display.model.Container;
 import com.display.model.Group;
 import com.display.model.Plan;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.plan.dao.PlanDao;
 
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +27,13 @@ public class PlanService {
     private InitService initService;
 
     //存入计划箱
-    public void addPlan(String oldContainerID, HashMap planContainer, HashMap planMap){
+    public ResultMsg addPlan(String oldContainerID, HashMap planContainer, HashMap planMap){
+        //判断是否已有未执行计划
+        String hasPlan = planDao.getPlanID(oldContainerID);
+        if (!"".equals(hasPlan)){
+            return new ResultMsg("P0002","has a plan already!",null);
+        }
+
         //转换
         String newContainerID = initService.createID("C");
 
@@ -37,7 +45,7 @@ public class PlanService {
         container.setContainerName((String) planContainer.get("name"));
         container.setContainerType((String) planContainer.get("type"));
         container.setLayer(planContainer.get("layer").toString());
-        container.setContainerPos((String) planContainer.get("pos"));
+        container.setGroup_px_pos((String) planContainer.get("pos"));
         container.setContainerSize((String) planContainer.get("size"));
         container.setIsPlan("1");
         container.setContainerUrl("/images/container-plan.png");
@@ -62,6 +70,7 @@ public class PlanService {
         plan.setFlag("ZN02");
         plan.setHeavyFlag((String) planMap.get(""));
         planDao.addPlan(plan);
+        return new ResultMsg("P0001","success",null);
     }
 
     //修改计划

@@ -11,6 +11,8 @@ public class CoordinateUtil {
 
     private static final int METER2PX = 6; // 1m = 6px = 3尺
     private static final int LAYER_PX = 20;//每层20px
+    private static final String trainPosOne = "10 5";
+    private static final String trainPosTwo = "50 5";
 
     /**
      * meter to px
@@ -48,11 +50,16 @@ public class CoordinateUtil {
      * @return
      */
     public static String getContainerPos(String oldPos,String layer){
-        if ("0".equals(layer)){
-            return oldPos;
+        if (oldPos == null){
+            return "";
         }
+        //火车
+        if ("3".equals(layer)||"4".equals(layer)){
+            return "3".equals(layer)?trainPosOne:trainPosTwo;
+        }
+        //箱位
         String[] size = oldPos.split(" ");
-        float y = Float.valueOf(size[1]) + (3 - Integer.valueOf(layer))*LAYER_PX;
+        float y = Float.valueOf(size[1]) + (2 - Integer.valueOf(layer))*LAYER_PX;
         String x = size[0];
 
         return x + " " + y;

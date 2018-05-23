@@ -166,8 +166,8 @@ public class DisplayService {
      * @return
      */
     public String getPlanContainerIDbyName(String oldContainerName) {
-        Container container = displayDao.getContainerByName(oldContainerName);
-        return displayDao.getPlanContainerID(container.getContainer_id());
+        Container oldContainer = displayDao.getContainerByName(oldContainerName);
+        return displayDao.getPlanContainerID(oldContainer.getContainer_id());
     }
 
     /**

@@ -6,30 +6,30 @@ package com.config.interceptor;
  */
 public class ResultMsg {
 
-    private String errorCode;
-    private String errorMsg;
+    private String resultCode;
+    private String resultMsg;
     private Object data;
 
-    public ResultMsg(String ErrCode, String ErrMsg, Object data) {
-        this.errorCode = ErrCode;
-        this.errorMsg = ErrMsg;
+    public ResultMsg(String resultCode, String resultMsg, Object data) {
+        this.resultCode = resultCode;
+        this.resultMsg = resultMsg;
         this.data = data;
     }
 
-    public String getErrcode() {
-        return errorCode;
+    public String getResultCode() {
+        return resultCode;
     }
 
-    public void setErrcode(String errcode) {
-        this.errorCode = errcode;
+    public void setResultCode(String resultCode) {
+        this.resultCode = resultCode;
     }
 
-    public String getErrmsg() {
-        return errorMsg;
+    public String getResultMsg() {
+        return resultMsg;
     }
 
-    public void setErrmsg(String errmsg) {
-        this.errorMsg = errmsg;
+    public void setResultMsg(String resultMsg) {
+        this.resultMsg = resultMsg;
     }
 
     public Object getData() {

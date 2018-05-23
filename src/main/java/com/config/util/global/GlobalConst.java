@@ -6,6 +6,7 @@ package com.config.util.global;
  */
 public class GlobalConst {
     public final static String PIC_URL = "http://localhost:8001";
+
     public final static int pageSize = 25;// 定义全局分页每页数据记录数
 
     public final static String password = "11111111";//初始密码

@@ -53,7 +53,7 @@ import java.util.List;
 
     public int addPlan(Plan plan) {
         String sql = "INSERT INTO JX_TX_PLAN (PLAN_ID,PLAN_TYPE,OLD_CONTAINER_ID,NEW_CONTAINER_ID,EQUIPMENT,PLAN_DATE_END,PLAN_DATE_BEGIN,CREATE_USER_ID,AUDITOR_ID,OPERATOR_ID,CREATETIME,PLAN_FROM,FLAG,HEAVY_FLAG)" +
-                "VALUES(:planID,:planType,:oldContainerID,:newContainerID,:equipment,:planDateEnd,:planDateBegin,:createUserID,:auditorID,:operatorID,sysdate,:planFrom,:flag,:heavyFlag)";
+                "VALUES(:plan_id,:planType,:old_container_id,:new_container_id,:equipment,:planDateEnd,:planDateBegin,:createUserID,:auditorID,:operatorID,sysdate,:planFrom,:flag,:heavyFlag)";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(plan);
         return namedParameterJdbcTemplate.update(sql, paramSource);
@@ -63,7 +63,6 @@ import java.util.List;
     public int updatePlanContainer(String Container_ID){
         Object[] params = new Object[] { Container_ID };
         String sql = "update JX_TX_CONTAINER set ISPLAN = '3' ,UPDATETIME = sysdate where CONTAINER_ID = ?";
-        SqlParameterSource paramSource = new BeanPropertySqlParameterSource(params);
         return jdbcTemplate.update(sql, params);
     }
 
@@ -77,11 +76,10 @@ import java.util.List;
 
     }
 
-    public int deletePlan(String planID){
+    public int deletePlan(String plan_id){
+        Object[] params = new Object[] { plan_id };
         String sql = "update JX_TX_PLAN set FLAG='ZN05'  where PLAN_ID=?";
-        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
-        SqlParameterSource paramSource = new BeanPropertySqlParameterSource(planID);
-        return namedParameterJdbcTemplate.update(sql, paramSource);
+        return jdbcTemplate.update(sql, params);
 
     }
 
