@@ -106,4 +106,12 @@ public class PlanService {
         oldPlan.setHeavyFlag((String) planMap.get(""));
         planDao.updatePlan(oldPlan);
     }
+
+    public void deletePlan(String containerId) {
+        //将原计划箱状态删除
+        planDao.updatePlanContainer(containerId);
+        //删除Plan
+        Plan oldPlan = planDao.getPlan(containerId);
+        planDao.deletePlan(oldPlan.getPlan_id());
+    }
 }

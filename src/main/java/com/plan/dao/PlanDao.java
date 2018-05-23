@@ -78,7 +78,7 @@ import java.util.List;
     }
 
     public int deletePlan(String planID){
-        String sql = "update JX_TX_PLAN set NEW_CONTAINER_ID='',FLAG=ZN01  where PLAN_ID=?";
+        String sql = "update JX_TX_PLAN set FLAG='ZN05'  where PLAN_ID=?";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(planID);
         return namedParameterJdbcTemplate.update(sql, paramSource);

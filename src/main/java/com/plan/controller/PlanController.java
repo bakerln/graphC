@@ -28,7 +28,7 @@ public class PlanController {
 
         planService.addPlan(containerId,planContainerMap,planMap);
 
-        WebUtil.out(response,"success");
+        WebUtil.out(response, JsonUtil.createOperaStr(true,"success"));
     }
 
     @RequestMapping(value = "updatePlan")
@@ -38,9 +38,16 @@ public class PlanController {
 
         planService.updatePlan(containerId,planContainerMap,planMap);
 
-        WebUtil.out(response,"success");
+        WebUtil.out(response, JsonUtil.createOperaStr(true,"success"));
     }
 
+    @RequestMapping(value = "delete")
+    public void deletePlan(HttpServletResponse response,String containerId){
+        //计划箱id
+        planService.deletePlan(containerId);
+
+
+    }
     @RequestMapping(value = "completePlan")
     public void completePlan(){
 
