@@ -1,4 +1,5 @@
 package com.display.controller;
+import com.config.interceptor.ResultMsg;
 import com.display.service.DisplayService;
 import com.display.vo.AreaVO;
 import com.display.vo.ContainerVO;
@@ -77,6 +78,13 @@ public class DisplayController {
         ContainerVO oldContainer = displayService.getContainer(oldContainerName,"2");
         ContainerVO newContainer = displayService.getContainer(newContainerID,"1");
 
+        ResultMsg resultMsg;
+        if (oldContainer == null){
+            resultMsg = new ResultMsg("P0011","箱场无该箱号","");
+        } else if (newContainer == null){
+            resultMsg = new ResultMsg("P0012","该箱号无计划","");
+        }else resultMsg = new ResultMsg("P0010","success","");
+
         //areaList
         List<AreaVO> areaList = displayService.getAreaList();
         //groupList
@@ -85,8 +93,13 @@ public class DisplayController {
         Map initMap = new HashMap();
         initMap.put("areaList",areaList);
         initMap.put("groupList",groupList);
-        initMap.put("oldContainer",oldContainer);
-        initMap.put("newContainer",newContainer);
+        if (oldContainer != null){
+            initMap.put("oldContainer",oldContainer);
+        }
+        if (newContainer != null){
+            initMap.put("newContainer",newContainer);
+        }
+        initMap.put("resultMsg",resultMsg);
 
         WebUtil.out(response, JsonUtil.toStr(initMap));
     }

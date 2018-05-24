@@ -11,10 +11,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
-
-
-
     @Repository
     public class DisplayDao {
 
@@ -44,13 +40,13 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
             Object[] params = new Object[] { param };
             String sql = "select * from JX_TX_CONTAINER where ISPLAN = '0' AND CONTAINER_NAME = ?";
             List<Container> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Container.class));
-            return list.get(0);
+            return list.size() == 0 ? null:list.get(0);
         }
         public Container getContainerByID(String containerID) {
             Object[] params = new Object[] { containerID };
             String sql = "select * from JX_TX_CONTAINER where CONTAINER_ID = ?";
             List<Container> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper(Container.class));
-            return list.get(0);
+            return list.size()==0 ? null:list.get(0);
         }
 
         public String getPlanContainerID(String oldContainerID) {

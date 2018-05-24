@@ -39,7 +39,7 @@ public class PlanController {
 
         planService.updatePlan(containerId,planContainerMap,planMap);
 
-        WebUtil.out(response, JsonUtil.createOperaStr(true,"success"));
+        WebUtil.out(response, JsonUtil.toStr(new ResultMsg("P0020","修改计划成功","")));
     }
 
     @RequestMapping(value = "/deletePlan")
@@ -47,7 +47,7 @@ public class PlanController {
         //计划箱id
         planService.deletePlan(containerId);
 
-        WebUtil.out(response, JsonUtil.createOperaStr(true,"success"));
+        WebUtil.out(response, JsonUtil.toStr(new ResultMsg("P0030","删除计划成功","")));
 
     }
     @RequestMapping(value = "completePlan")

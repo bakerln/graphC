@@ -139,6 +139,10 @@ public class DisplayService {
         }else if ("1".equals(type)){
             container = displayDao.getContainerByID(param);
         }else return null;
+
+        //该箱场无箱子显示null
+        if (container == null) return null;
+
         //转换
         String newPos = CoordinateUtil.getContainerPos(container.getGroup_px_pos(),container.getLayer());
         String url = GlobalConst.PIC_URL + container.getContainerUrl();
@@ -167,6 +171,8 @@ public class DisplayService {
      */
     public String getPlanContainerIDbyName(String oldContainerName) {
         Container oldContainer = displayDao.getContainerByName(oldContainerName);
+        //箱场有无该箱子
+        if (oldContainer == null) return "";
         return displayDao.getPlanContainerID(oldContainer.getContainer_id());
     }
 
