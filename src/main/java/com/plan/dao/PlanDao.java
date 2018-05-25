@@ -43,8 +43,8 @@ import java.util.List;
     }
 
     public int addContainer(Container container) {
-        String sql = "INSERT INTO JX_TX_CONTAINER (CONTAINER_ID,CONTAINER_KEY,CONTAINER_GROUP,CONTAINER_NAME,CONTAINER_TYPE,LAYER,CONTAINER_POS,GROUP_PX_POS,CONTAINER_SIZE,ISPLAN,CONTAINER_SCALE,CONTAINER_URL,CREATETIME,UPDATETIME,USER_ID,PLANTIME,ARRIVETIME)" +
-                "VALUES(:container_id,:containerKey,:containerGroup,:containerName,:containerType,:layer,:containerPos,:group_px_pos,:containerSize,:isPlan,:containerScale,:containerUrl,sysdate,sysdate,:userID,:planTime,:arriveTime)";
+        String sql = "INSERT INTO JX_TX_CONTAINER (CONTAINER_ID,CONTAINER_KEY,CONTAINER_GROUP,CONTAINER_NAME,CONTAINER_TYPE,LAYER,CONTAINER_POS,GROUP_PX_POS,CONTAINER_SIZE,ISPLAN,CONTAINER_SCALE,CONTAINER_URL,CREATETIME,USER_ID,PLANTIME,ARRIVETIME)" +
+                "VALUES(:container_id,:containerKey,:containerGroup,:containerName,:containerType,:layer,:containerPos,:group_px_pos,:containerSize,:isPlan,:containerScale,:containerUrl,sysdate,:userID,:planTime,:arriveTime)";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(container);
         return namedParameterJdbcTemplate.update(sql, paramSource);
